@@ -13,4 +13,12 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Стиль для кастомной закруглённой кнопки -->
+    <style name="MyRoundedButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">32dp</item>
+        <item name="backgroundTint">#27B4EF</item>
+    </style>
+
+
 </resources>
