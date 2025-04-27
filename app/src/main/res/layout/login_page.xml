@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вход"
+        android:text="@string/enterPhrase"
         android:textSize="30dp"
         android:textStyle="bold"
         android:layout_marginBottom="32dp"
@@ -36,7 +36,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ID сотрудника"
+            android:hint="@string/enterId"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +51,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Пароль"
+            android:hint="@string/enterPassword"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,13 +60,13 @@
         style="@style/MyRoundedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Войти"
+        android:text="@string/enterButton"
         android:layout_weight="2"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="В случае возникновения ошибки обратитесь к своему системному администратору"
+        android:text="@string/helpInfo"
         android:textSize="12sp"
         android:gravity="center"
         android:layout_marginTop="16dp"

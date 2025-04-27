@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">University_coursework</string>
+
+    <!-- Экран входа -->
+    <string name="enterPhrase">Вход</string>
+    <string name="enterId">ID сотрудника</string>
+    <string name="enterPassword">Пароль</string>
+    <string name="enterButton">Войти</string>
+    <string name="helpInfo">В случае возникновения ошибки обратитесь к своему системному администратору</string>
 </resources>
