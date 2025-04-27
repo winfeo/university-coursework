@@ -37,11 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Проверяем на коректный ввод (сравнение с данными из БД)
         if (inputLogin.equals(CORRECT_LOGIN) && inputPassword.equals(CORRECT_PASSWORD)) {
-            // Успешный вход
-            //startActivity(new Intent(this, HomeActivity.class));
-            finish(); // Закрываем текущую активность
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
         } else {
-            // Неверные данные
             showError("Неверный логин или пароль");
         }
 
