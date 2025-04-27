@@ -28,13 +28,14 @@
         android:layout_gravity="start"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/enterLogin"
+        android:id="@+id/loginInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enterLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enterId"
@@ -42,13 +43,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/enterPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enterPassword"
@@ -60,6 +61,7 @@
         style="@style/MyRoundedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="enterButton"
         android:text="@string/enterButton"/>
 
     <TextView
