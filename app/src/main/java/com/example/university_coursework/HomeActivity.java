@@ -17,9 +17,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.home_page);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // Загружаем сразу домашний экран
-        loadFragment(new HomeFragment());
+        loadFragment(new HomeFragment()); // Загружаем сразу домашний экран
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
