@@ -2,17 +2,17 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Главная" />
+        android:icon="@drawable/home"
+        android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Поиск" />
+        android:icon="@drawable/search"
+        android:title="@string/search" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Профиль" />
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
 
 </menu>

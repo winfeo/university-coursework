@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp">
+    android:padding="5dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
 
             <!-- ФИО -->
             <TextView
-                android:id="@+id/name_card_list_item"
+                android:id="@+id/fio_card_list_item"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -56,7 +56,7 @@
                 android:textColor="@android:color/darker_gray"
 
                 app:layout_constraintStart_toEndOf="@+id/picture_card_list_item"
-                app:layout_constraintTop_toBottomOf="@id/name_card_list_item" />
+                app:layout_constraintTop_toBottomOf="@id/fio_card_list_item" />
 
             <!-- Диагноз -->
             <TextView
@@ -127,7 +127,6 @@
 
             <!-- ID -->
             <FrameLayout
-                android:id="@+id/frameLayoutID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -137,7 +136,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/policy_name_card_list_item">
 
                 <TextView
-                    android:id="@+id/idTextView"
+                    android:id="@+id/id_name_card_list_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
