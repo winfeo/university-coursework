@@ -20,10 +20,12 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
     ArrayList<PatientMiniCard> patients = new ArrayList<PatientMiniCard>();  //список карточек пациентов
 
+    /*
     public HomeFragment() { // Отображение фрагмента
         super(R.layout.fragment_home);
-
     }
+
+     */
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

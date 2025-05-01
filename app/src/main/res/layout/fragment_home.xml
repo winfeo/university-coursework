@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="15dp"
-    android:paddingTop="15dp"
-    tools:context=".HomeFragment">
+    tools:context=".HomeFragment"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingTop="15dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Кнопка увеломлений -->
         <FrameLayout
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@drawable/circle_card_border"
             android:layout_gravity="right"
-            android:layout_marginBottom="10dp" >
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_card_border">
 
             <ImageButton
                 android:id="@+id/notificationButton"
@@ -37,66 +43,64 @@
             android:id="@+id/greetingPhrase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Здравствйте, Кирилл!"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_marginBottom="20dp"
-            />
+            android:text="Здравствйте, Кирилл!"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <!-- Плашка со статистикой -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/rectangle_card"
             android:orientation="vertical"
-            android:paddingTop="10dp"
             android:paddingStart="20dp"
-            android:layout_marginBottom="30dp">
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="2"
                 android:text="@string/patient_statistics"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:maxLines="2"
-                />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/patientNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="8"
                 android:includeFontPadding="false"
-                android:textStyle="bold"
+                android:text="8"
+                android:textColor="@color/white"
                 android:textSize="80sp"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="@string/patient_statistics2"
-            android:textSize="22sp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginBottom="20dp"
-            />
-
-        <!-- Список пациентов -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/patient_recyclerView_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
-
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
+    <!-- Список пациентов -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/patient_recyclerView_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</LinearLayout>
