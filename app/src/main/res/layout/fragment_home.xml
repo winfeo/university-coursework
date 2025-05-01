@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
+    android:paddingHorizontal="15dp"
+    android:paddingTop="15dp"
     tools:context=".HomeFragment">
 
     <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_height="48dp"
             android:background="@drawable/circle_card_border"
             android:layout_gravity="right"
-            android:layout_marginBottom="20dp" >
+            android:layout_marginBottom="10dp" >
 
             <ImageButton
                 android:id="@+id/notificationButton"

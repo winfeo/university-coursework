@@ -41,6 +41,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
 
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/picture_card_list_item"
                 app:layout_constraintTop_toTopOf="parent" />
 
