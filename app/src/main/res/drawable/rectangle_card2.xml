@@ -3,10 +3,10 @@
     android:shape="rectangle">
 
     <!-- Внутренний фон -->
-    <solid android:color="@color/buttonColor"/>
+    <solid android:color="@color/buttonColor2"/>
 
     <!-- Граница -->
-    <stroke android:width="2dp" android:color="@color/buttonColor" />
+    <stroke android:width="2dp" android:color="@color/buttonColor2" />
 
     <!-- Скруглённые углы -->
     <corners android:radius="16dp"/>

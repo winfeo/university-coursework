@@ -10,6 +10,7 @@
     <color name="gray">#5C5C5C</color>
     <color name="light_gray">#EDEDED</color>
     <color name="buttonColor">#27B4EF</color>
+    <color name="buttonColor2">#DFF6FF</color>
 
 </resources>
 
