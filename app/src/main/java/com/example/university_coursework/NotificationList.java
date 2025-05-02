@@ -18,7 +18,7 @@ public class NotificationList extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle("Уведомления");
+            getSupportActionBar().setTitle(getText(R.string.notifications));
         }
     }
 
