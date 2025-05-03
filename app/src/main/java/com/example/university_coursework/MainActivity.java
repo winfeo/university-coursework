@@ -3,18 +3,23 @@ package com.example.university_coursework;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    private final static String CORRECT_LOGIN = "admin";
-    private final static String CORRECT_PASSWORD = "admin";
+import com.example.university_coursework.database.DatabaseDoctorsHelper;
 
+public class MainActivity extends AppCompatActivity {
     private EditText loginText;
     private EditText passwordText;
+
+    public DatabaseDoctorsHelper dbDoctorsHelper;
+    public SQLiteDatabase dbDoctors;
+    public Cursor userCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +28,20 @@ public class MainActivity extends AppCompatActivity {
 
         loginText = findViewById(R.id.enterLogin);
         passwordText = findViewById(R.id.enterPassword);
+
+        //создаём (загружаем) базу данных докторов
+        dbDoctorsHelper = new DatabaseDoctorsHelper(getApplicationContext());
+        dbDoctorsHelper.createDatabase();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Получаем все записи из БД
+        dbDoctors = dbDoctorsHelper.open();
+        userCursor = dbDoctors.rawQuery("select * from " + dbDoctorsHelper.TABLE,null);
+        Log.d("DatabaseDoctorHelper", Integer.toString(userCursor.getCount()));
+
     }
 
     public void enterButton(View view){
@@ -35,13 +54,29 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Проверяем на коректный ввод (сравнение с данными из БД)
+        // Проверяем на коректный ввод (сравнение с логином и паролём из БД)
+        while(userCursor.moveToNext()){
+            String userLogin = userCursor.getString(userCursor.getColumnIndexOrThrow("login"));
+            if(userLogin == inputLogin){
+                String userPassword = userCursor.getString(userCursor.getColumnIndexOrThrow("password"));
+                if(userPassword == inputPassword){
+                    startActivity(new Intent(this, HomeActivity.class));
+                    finish();
+                }
+                else showError("Неверный логин или пароль");
+            }
+
+        }
+
+
+        /*
         if (inputLogin.equals(CORRECT_LOGIN) && inputPassword.equals(CORRECT_PASSWORD)) {
-            startActivity(new Intent(this, HomeActivity.class));
-            finish();
+
         } else {
             showError("Неверный логин или пароль");
         }
+
+         */
 
     }
 
