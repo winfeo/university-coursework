@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.example.university_coursework.database.*;
+
 public class HomeFragment extends Fragment {
     ArrayList<PatientMiniCard> patients = new ArrayList<PatientMiniCard>();  //список карточек пациентов
 

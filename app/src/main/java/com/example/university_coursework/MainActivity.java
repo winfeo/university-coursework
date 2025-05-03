@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.university_coursework.database.DatabaseDoctorsHelper;
+import com.example.university_coursework.database.*;
 
 public class MainActivity extends AppCompatActivity {
     private EditText loginText;
@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     public DatabaseDoctorsHelper dbDoctorsHelper;
     public SQLiteDatabase dbDoctors;
-    public Cursor userCursor;
+    public Cursor userCursor; //курсор для получения БД докторов
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +58,17 @@ public class MainActivity extends AppCompatActivity {
         // Проверяем на коректный ввод (сравнение с логином и паролём из БД)
         while(userCursor.moveToNext()){
             String userLogin = userCursor.getString(userCursor.getColumnIndexOrThrow("login"));
-            if(userLogin == inputLogin){
+            if(userLogin.equals(inputLogin)){
                 String userPassword = userCursor.getString(userCursor.getColumnIndexOrThrow("password"));
-                if(userPassword == inputPassword){
+                if(userPassword.equals(inputPassword)){
+                    //получаем данные о докторе и сохраняем их в объект
+                    String doctorId = userCursor.getString(userCursor.getColumnIndexOrThrow("_id"));
+                    String doctorName = userCursor.getString(userCursor.getColumnIndexOrThrow("name"));
+                    String doctorSurname = userCursor.getString(userCursor.getColumnIndexOrThrow("surname"));
+                    String doctorFathersName = userCursor.getString(userCursor.getColumnIndexOrThrow("fathers_name"));
+                    String doctorEmail = userCursor.getString(userCursor.getColumnIndexOrThrow("email"));
+                    DoctorInfo doctorInfo = new DoctorInfo(doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
+
                     startActivity(new Intent(this, HomeActivity.class));
                     finish();
                 }
@@ -67,16 +76,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
-
-        /*
-        if (inputLogin.equals(CORRECT_LOGIN) && inputPassword.equals(CORRECT_PASSWORD)) {
-
-        } else {
-            showError("Неверный логин или пароль");
-        }
-
-         */
 
     }
 

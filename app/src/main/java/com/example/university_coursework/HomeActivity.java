@@ -11,6 +11,7 @@ import android.os.Bundle;
 import com.example.university_coursework.database.DatabaseDoctorsHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class HomeActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
