@@ -18,6 +18,7 @@
     <string name="patient_statistics">Количество наблюдаемых вами\nпациентов:</string>
     <string name="patient_statistics2">Ваши пациенты</string>
     <string name="notifications">Уведомления</string>
+    <string name="greetings">Здравствуйте,</string>
 
     <!-- Текст для фрагмента профиль -->
     <string name="profile_title">Профиль</string>

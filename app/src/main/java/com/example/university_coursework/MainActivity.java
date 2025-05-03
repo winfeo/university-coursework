@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Проверяем на коректный ввод (сравнение с логином и паролём из БД)
-        while(userCursor.moveToNext()){
+        userCursor.moveToFirst();
+        while(!userCursor.isAfterLast()){
             String userLogin = userCursor.getString(userCursor.getColumnIndexOrThrow("login"));
             if(userLogin.equals(inputLogin)){
                 String userPassword = userCursor.getString(userCursor.getColumnIndexOrThrow("password"));
@@ -67,19 +68,28 @@ public class MainActivity extends AppCompatActivity {
                     String doctorSurname = userCursor.getString(userCursor.getColumnIndexOrThrow("surname"));
                     String doctorFathersName = userCursor.getString(userCursor.getColumnIndexOrThrow("fathers_name"));
                     String doctorEmail = userCursor.getString(userCursor.getColumnIndexOrThrow("email"));
-                    DoctorInfo doctorInfo = new DoctorInfo(doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
+                    DoctorInfo doctorObject = new DoctorInfo(doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
+                    //сохраняем экземпляр класса для использования в других активностях
+                    //doctorObject.saveObject(doctorObject);
 
                     startActivity(new Intent(this, HomeActivity.class));
                     finish();
+                    return;
                 }
-                else showError("Неверный логин или пароль");
             }
-
+            userCursor.moveToNext();
         }
-
+        showError("Неверный логин или пароль");
     }
 
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        userCursor.close();
+        dbDoctors.close();
     }
 }

@@ -54,6 +54,11 @@ public class HomeFragment extends Fragment {
         TextView patientsNumber = getView().findViewById(R.id.patientNumber);
         patientsNumber.setText(Integer.toString(patients.size()));
 
+        TextView greetingPhrase = getView().findViewById(R.id.greetingPhrase);
+
+
+        greetingPhrase.setText(getString(R.string.greetings) + " " + DoctorInfo.getName() + "!");
+
         ImageButton button = getView().findViewById(R.id.notificationButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
