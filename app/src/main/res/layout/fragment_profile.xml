@@ -34,9 +34,9 @@
         <TextView
             android:id="@+id/profileFIO"
             android:layout_width="0dp"
+            android:maxLines="2"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="Рябикин Кирилл Вячеславович"
             android:textColor="@color/black"
 
             android:textSize="24sp"
@@ -51,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="4dp"
-            android:text="ryabikin.k.v@policlinic.ru"
 
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"

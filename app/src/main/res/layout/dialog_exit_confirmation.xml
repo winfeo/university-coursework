@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
+    android:paddingHorizontal="24dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_card4"
+    app:cardElevation="6dp">
+
+    <TextView
+        android:id="@+id/exit_dialog_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вы уверены, что хотите выйти из аккаунта?"
+        android:textSize="16sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingTop="12dp">
+
+        <Button
+            android:id="@+id/buttonYES"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:layout_marginStart="1dp"
+            style="@style/MyRoundedButtonGray"
+            android:textColor="@color/gray"
+            android:layout_weight="1"
+            android:text="@string/exitDialogYES"/>
+
+        <Button
+            android:id="@+id/buttonNO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="@string/exitDialogNO" />
+
+    </LinearLayout>
+
+</LinearLayout>

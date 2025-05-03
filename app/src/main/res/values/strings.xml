@@ -25,6 +25,9 @@
     <string name="settings">Настройки</string>
     <string name="about_app">О приложении</string>
     <string name="exit">Выйти из аккаунта</string>
+    <string name="exitDialogNO">Отмена</string>
+    <string name="exitDialogYES">Выйти</string>
+    <string name="exitDialog">Выход</string>
 
     <!-- Текст для мини-карточки пациента -->
     <string name="oms">Полис ОМС:</string>

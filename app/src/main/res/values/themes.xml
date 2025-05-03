@@ -24,6 +24,11 @@
         <item name="backgroundTint">@color/buttonColor</item>
     </style>
 
+    <style name="MyRoundedButtonGray" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">8dp</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
 
 
 </resources>
