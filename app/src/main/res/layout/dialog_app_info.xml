@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingTop="24dp"
+    android:paddingHorizontal="24dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle_card4"
+    app:cardElevation="6dp">
+
+    <TextView
+        android:id="@+id/info_dialog_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_nameString"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/info_dialog_text_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_version"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textColor="@color/buttonColor"
+        android:layout_marginBottom="24dp"/>
+    <TextView
+        android:id="@+id/info_dialog_text_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_info"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textColor="@color/gray"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/info_dialog_text_app_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_description"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textColor="@color/gray"
+        android:layout_marginBottom="64dp"/>
+
+    <TextView
+        android:id="@+id/info_dialog_text_app_creator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_creator"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textColor="@color/buttonColor"/>
+
+    <TextView
+        android:id="@+id/info_dialog_text_app_contacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_contacts"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textColor="@color/gray"/>
+    <TextView
+        android:id="@+id/info_dialog_text_app_privacyPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_privacyPolicy"
+        android:textSize="16sp"
+        android:layout_gravity="start"
+        android:textColor="@color/gray"
+        android:layout_marginBottom="32dp"/>
+
+
+    <Button
+        android:id="@+id/buttonInfoConfirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:layout_marginEnd="1dp"
+        android:layout_weight="1"
+        android:text="@string/appInfoConfirmation" />
+
+
+</LinearLayout>

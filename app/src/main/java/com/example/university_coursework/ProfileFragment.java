@@ -2,6 +2,8 @@ package com.example.university_coursework;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -48,8 +50,6 @@ public class ProfileFragment extends Fragment {
         LinearLayout exitButton = getView().findViewById(R.id.exitButton); //Диалоговое окно
 
 
-
-
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,27 +58,58 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
+        appInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Диалоговое окно с информацией о приложении
+                View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_app_info, null);
+                AlertDialog dialogInfo = new AlertDialog.Builder(getContext())
+                        .setView(dialogView)
+                        .setCancelable(false)
+                        .create();
+
+                //для отображения без зданего фона
+                if (dialogInfo.getWindow() != null) {
+                    dialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                }
+
+                dialogView.findViewById(R.id.buttonInfoConfirmation).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) { dialogInfo.dismiss(); }
+                });
+
+                dialogInfo.show();
+            }
+        });
+
+
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Диалоговое окно с подтверждением выхода
                 View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_exit_confirmation, null);
-                AlertDialog dialog = new AlertDialog.Builder(getContext())
+                AlertDialog dialogExit = new AlertDialog.Builder(getContext())
                         .setView(dialogView)
                         .setCancelable(false)
                         .create();
 
+                //для отображения без зданего фона
+                if (dialogExit.getWindow() != null) {
+                    dialogExit.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                }
+
                 dialogView.findViewById(R.id.buttonNO).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialog.dismiss();
+                        dialogExit.dismiss();
                     }
                 });
 
                 dialogView.findViewById(R.id.buttonYES).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view){
-                        dialog.dismiss();
+                        dialogExit.dismiss();
                         Intent intent = new Intent(getContext(), MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
@@ -87,7 +118,7 @@ public class ProfileFragment extends Fragment {
 
                 });
 
-                dialog.show();
+                dialogExit.show();
             }
         });
 

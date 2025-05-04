@@ -14,7 +14,7 @@
         android:id="@+id/exit_dialog_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вы уверены, что хотите выйти из аккаунта?"
+        android:text="@string/exitTextConfirmation"
         android:textSize="16sp"
         android:layout_gravity="center"
         android:layout_marginBottom="24dp" />

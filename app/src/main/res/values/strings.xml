@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">University_coursework</string>
+    <string name="app_name">Пациенты больницы</string>
+
+    <string name="app_nameString">Приложение: Пациенты больницы</string>
+    <string name="app_version">Версия: 1.0.0</string>
+    <string name="app_info">Мобильная информационно-справочная система для врачей.</string>
+    <string name="app_description">Приложение предоставляет доступ к сведениям о пациентах, истории лечения, назначениях и медицинской информации, необходимой для повседневной клинической практики.</string>
+    <string name="app_creator">Разработчк: Рябикин Кирилл Вячеславович</string>
+    <string name="app_contacts">Контакты: support@example.com</string>
+    <string name="app_privacyPolicy">Политика конфиденциальности: www.minecraft.story-mod.com/privacy</string>
 
     <!-- Экран входа -->
     <string name="enterPhrase">Вход</string>
@@ -28,6 +36,8 @@
     <string name="exitDialogNO">Отмена</string>
     <string name="exitDialogYES">Выйти</string>
     <string name="exitDialog">Выход</string>
+    <string name="exitTextConfirmation">Вы уверены, что хотите выйти из аккаунта?</string>
+    <string name="appInfoConfirmation">Понятно</string>
 
     <!-- Текст для мини-карточки пациента -->
     <string name="oms">Полис ОМС:</string>
