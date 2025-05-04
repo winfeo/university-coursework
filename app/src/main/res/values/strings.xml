@@ -22,11 +22,14 @@
     <string name="profile">Профиль</string>
 
     <!-- Текст для фрагмента главная страница -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="patient_statistics">Количество наблюдаемых вами\nпациентов:</string>
     <string name="patient_statistics2">Ваши пациенты</string>
     <string name="notifications">Уведомления</string>
     <string name="greetings">Здравствуйте,</string>
+
+    <!-- Текст для фрагмента профиль -->
+    <string name="patientsList">Список всех пациентов</string>
+    <string name="searchHint">Введите ID пациента</string>
 
     <!-- Текст для фрагмента профиль -->
     <string name="profile_title">Профиль</string>

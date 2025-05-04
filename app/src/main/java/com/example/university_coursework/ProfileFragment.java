@@ -17,17 +17,18 @@ import android.widget.TextView;
 import com.example.university_coursework.database.*;
 
 public class ProfileFragment extends Fragment {
+    LinearLayout settingsButton; //Новая активность
+    LinearLayout appInfoButton; //Диалоговое окно
+    LinearLayout exitButton;   //Диалоговое окно
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile, container, false);
-
     }
 
     @Override
@@ -39,16 +40,15 @@ public class ProfileFragment extends Fragment {
 
         TextView email = getView().findViewById(R.id.profileEmail);
         email.setText(DoctorInfo.getEmail());
+
+        settingsButton = view.findViewById(R.id.settingsButton);
+        appInfoButton = view.findViewById(R.id.appInfoButton);
+        exitButton = view.findViewById(R.id.exitButton);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        LinearLayout settingsButton = getView().findViewById(R.id.settingsButton); //Новая активность
-        LinearLayout appInfoButton = getView().findViewById(R.id.appInfoButton); //Диалоговое окно
-        LinearLayout exitButton = getView().findViewById(R.id.exitButton); //Диалоговое окно
-
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,10 +121,6 @@ public class ProfileFragment extends Fragment {
                 dialogExit.show();
             }
         });
-
-
-
-
 
 
     }

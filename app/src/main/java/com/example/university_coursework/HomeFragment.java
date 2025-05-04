@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import com.example.university_coursework.database.*;
 
 public class HomeFragment extends Fragment {
-    ArrayList<PatientInfo> allPatients = new ArrayList<PatientInfo>();  //список всех пациентов
-    ArrayList<PatientInfo> doctorsPatients = new ArrayList<PatientInfo>();  //список пациентов конкретного доктора
+    public ArrayList<PatientInfo> allPatients = new ArrayList<PatientInfo>();  //список всех пациентов
+    public ArrayList<PatientInfo> doctorsPatients = new ArrayList<PatientInfo>();  //список пациентов конкретного доктора
 
     public DatabasePatientsHelper dbPatientsHelper;
     public SQLiteDatabase dbPatients;
@@ -127,7 +127,7 @@ public class HomeFragment extends Fragment {
     //Добавляем в список врача только его наблюдаемых пациентов
     public void fillDoctorsPatientsArrayList(){
         for (PatientInfo object : allPatients){
-            //Log.d("CurrentСomparison", object.getLeadingPhysician() + " - " + DoctorInfo.getId());
+            //Log.d("CurrentComparison", object.getLeadingPhysician() + " - " + DoctorInfo.getId());
             if(object.getLeadingPhysician().equals(DoctorInfo.getId())){
                 doctorsPatients.add(object);
             }
