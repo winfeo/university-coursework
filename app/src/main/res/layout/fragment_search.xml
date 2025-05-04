@@ -38,6 +38,7 @@
             app:tint="@color/mid_gray" />
 
         <EditText
+            android:id="@+id/searchID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -75,6 +76,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_recyclerView_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </LinearLayout>
