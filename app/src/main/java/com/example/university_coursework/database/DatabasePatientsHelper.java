@@ -11,33 +11,33 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class DatabaseDoctorsHelper extends SQLiteOpenHelper {
-    private static String DATABASE_PATH; //полный путь к БД
-    private static final String DATABASE_NAME = "doctors.db"; //название БД
-    public static final String TABLE = "doctors"; //Название таблицы в БД
+public class DatabasePatientsHelper extends SQLiteOpenHelper {
+    private static String DATABASE_PATH;  //полный путь к БД
+    private static final String DATABASE_NAME = "patients.db";  //название БД
+    public static final String TITLE = "patients";  //Название таблицы в БД
 
-    //Названия столюцов
-    static final String COLUMN_ID = "_id";
-    static final String COLUMN_NAME = "name";
-    static final String COLUMN_SURNAME = "surname";
-    static final String COLUMN_FATHERS_NAME = "fathers_name";
-    static final String COLUMN_LOGIN = "login";
-    static final String COLUMN_PASSWORD = "password";
-    static final String COLUMN_EMAIL = "email";
+    //название столбцов
+    /*
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_SURNAME = "surname";
+    public static final String COLUMN_FATHERS_NAME = "fathers_name";
+
+     */
 
     private Context context;
 
-    public DatabaseDoctorsHelper(Context context){
-        super(context, DATABASE_NAME,null,1);
+    public DatabasePatientsHelper(Context context){
+        super(context, DATABASE_NAME, null, 1);
         this.context = context;
         DATABASE_PATH = context.getDatabasePath(DATABASE_NAME).getPath();
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {}
+    public void onCreate(SQLiteDatabase sqLiteDatabase) { }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {}
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) { }
 
     public void createDatabase(){
         File file = new File(DATABASE_PATH);
@@ -53,18 +53,19 @@ public class DatabaseDoctorsHelper extends SQLiteOpenHelper {
                 while ((length = myInput.read(buffer)) > 0) {
                     myOutput.write(buffer, 0, length);
                 }
-                Log.d("DatabaseDoctorHelper", "Копирование БД успешно");
+                Log.d("DatabasePatientsHelper", "Копирование БД успешно");
                 myOutput.flush();
             }
             catch(IOException ex){
-                Log.d("DatabaseDoctorHelper", ex.getMessage());
+                Log.d("DatabasePatientsHelper", ex.getMessage());
             }
         }
 
-        Log.d("DatabaseDoctorHelper", "Путь = " + DATABASE_PATH);
+        Log.d("DatabasePatientsHelper", "Путь = " + DATABASE_PATH);
     }
 
     public SQLiteDatabase open() {
         return SQLiteDatabase.openDatabase(DATABASE_PATH, null, SQLiteDatabase.OPEN_READWRITE);
     }
+
 }

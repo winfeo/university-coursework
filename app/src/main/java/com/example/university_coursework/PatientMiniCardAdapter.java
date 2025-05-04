@@ -8,14 +8,16 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.university_coursework.database.PatientInfo;
+
 import java.util.List;
 
 //Адаптер для списка карточек RecyclerView
 public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCardAdapter.ViewHolder> {
     private final LayoutInflater inflater;
-    private final List<PatientMiniCard> patients;
+    private final List<PatientInfo> patients;
 
-    PatientMiniCardAdapter(Context context, List<PatientMiniCard> patients){
+    PatientMiniCardAdapter(Context context, List<PatientInfo> patients){
         this.patients = patients;
         this.inflater = LayoutInflater.from(context);
     }
@@ -34,7 +36,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         String gender = holder.itemView.getContext().getString(R.string.gender);
         String diagnosis = holder.itemView.getContext().getString(R.string.diagnosis);
 
-        PatientMiniCard patient = patients.get(position);
+        PatientInfo patient = patients.get(position);
         //holder.photoResource.setImageResource(patient.getPhotoResource());
         holder.fioView.setText(patient.getSurname() + " " + patient.getName() + " " + patient.getFathersName());
         holder.ageAndGenderView.setText(age + " " + patient.getAge() + "    " + gender + " " + patient.getGender());
