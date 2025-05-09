@@ -1,14 +1,11 @@
-package com.example.university_coursework;
+package com.example.university_coursework.fragments;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.example.university_coursework.NotificationList;
+import com.example.university_coursework.PatientMiniCardAdapter;
+import com.example.university_coursework.R;
 import com.example.university_coursework.database.*;
 
 public class HomeFragment extends Fragment {

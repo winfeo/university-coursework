@@ -48,4 +48,11 @@
     <string name="gender">Пол:</string>
     <string name="age">Возраст:</string>
     <string name="diagnosis">Диагноз:</string>
+
+    <!-- Текст для карты пациента -->
+    <string name="patient_leadingPhysician">Ведущий врач:</string>
+    <string name="patient_medicalHistoryTitle">История болезни:</string>
+    <string name="patient_prescribedMedications">Назначения</string>
+    <string name="patient_medicalHistory">История</string>
+    <string name="patient_button">Редактировать</string>
 </resources>

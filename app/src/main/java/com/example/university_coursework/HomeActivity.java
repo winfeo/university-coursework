@@ -1,22 +1,24 @@
 package com.example.university_coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.fragment.app.Fragment;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.example.university_coursework.database.DatabaseDoctorsHelper;
 import com.example.university_coursework.database.DatabasePatientsHelper;
 import com.example.university_coursework.database.DoctorInfo;
 import com.example.university_coursework.database.PatientInfo;
 import com.example.university_coursework.database.StoreDatabases;
+import com.example.university_coursework.fragments.HomeFragment;
+import com.example.university_coursework.fragments.ProfileFragment;
+import com.example.university_coursework.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+
+import com.example.university_coursework.fragments.*;
 
 
 public class HomeActivity extends AppCompatActivity {

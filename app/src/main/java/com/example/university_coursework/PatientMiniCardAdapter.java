@@ -17,7 +17,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
     private final LayoutInflater inflater;
     private List<PatientInfo> patients;
 
-    PatientMiniCardAdapter(Context context, List<PatientInfo> patients){
+    public PatientMiniCardAdapter(Context context, List<PatientInfo> patients){
         this.patients = patients;
         this.inflater = LayoutInflater.from(context);
     }

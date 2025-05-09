@@ -1,4 +1,4 @@
-package com.example.university_coursework;
+package com.example.university_coursework.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.example.university_coursework.PatientMiniCardAdapter;
+import com.example.university_coursework.R;
 import com.example.university_coursework.database.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SearchFragment extends Fragment {
     ArrayList<PatientInfo> allPatients = StoreDatabases.getAllPatients(); //Список всех пациентов
@@ -33,10 +33,7 @@ public class SearchFragment extends Fragment {
     RecyclerView allPatientsRecyclerView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
+    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

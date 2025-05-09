@@ -1,4 +1,4 @@
-package com.example.university_coursework;
+package com.example.university_coursework.fragments;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.university_coursework.MainActivity;
+import com.example.university_coursework.ProfileSettings;
+import com.example.university_coursework.R;
 import com.example.university_coursework.database.*;
 
 public class ProfileFragment extends Fragment {

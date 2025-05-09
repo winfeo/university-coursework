@@ -3,7 +3,7 @@ package com.example.university_coursework.database;
 import java.io.Serializable;
 
 //Класс для объекта мини-карточки пациента
-public class PatientInfo implements Serializable {
+public class PatientInfo {
     private int photoResource;
     private String id;
 
