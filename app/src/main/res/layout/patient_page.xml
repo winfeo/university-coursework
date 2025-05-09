@@ -14,7 +14,87 @@
         android:layout_height="wrap_content"
         app:titleTextColor="@color/black"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_card4"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/patientImage"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:maxLines="2"
+            android:text="@string/diagnosis"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/patient_diagnosis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:lines="2"
+            android:text="Расстройство личности II степени"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:text="@string/patient_leadingPhysician"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintTop_toBottomOf="@+id/patient_diagnosis" />
+
+        <TextView
+            android:id="@+id/patient_leadingPhysician"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Рябикин К.В."
+            android:textSize="14sp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/patient_Id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="ID: 12A-012"
+            android:alpha="0.65"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:gravity="end"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintTop_toBottomOf="@+id/patient_leadingPhysician"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ScrollView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -23,88 +103,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rectangle_card4"
-                android:padding="15dp">
 
-                <ImageView
-                    android:id="@+id/patientImage"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@mipmap/ic_launcher"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:maxLines="2"
-                    android:text="@string/diagnosis"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/patientImage"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/patient_diagnosis"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:lines="2"
-                    android:text="Расстройство личности II степени"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/patientImage"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:textSize="16sp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/patient_leadingPhysician"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/patientImage"
-                    app:layout_constraintTop_toBottomOf="@+id/patient_diagnosis" />
-
-                <TextView
-                    android:id="@+id/patient_leadingPhysician"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Рябикин К.В."
-                    android:textSize="14sp"
-                    android:layout_marginStart="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/patientImage"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <TextView
-                    android:id="@+id/patient_Id"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="ID: 12A-012"
-                    android:alpha="0.65"
-                    android:textStyle="bold"
-                    android:textColor="@color/gray"
-                    android:gravity="end"
-                    android:layout_marginStart="24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/patientImage"
-                    app:layout_constraintTop_toBottomOf="@+id/patient_leadingPhysician"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/patient_FIO"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="2"
