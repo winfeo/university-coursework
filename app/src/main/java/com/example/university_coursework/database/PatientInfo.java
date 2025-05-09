@@ -1,7 +1,9 @@
 package com.example.university_coursework.database;
 
+import java.io.Serializable;
+
 //Класс для объекта мини-карточки пациента
-public class PatientInfo {
+public class PatientInfo implements Serializable {
     private int photoResource;
     private String id;
 

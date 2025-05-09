@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,18 +20,22 @@ import android.widget.LinearLayout;
 import com.example.university_coursework.database.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchFragment extends Fragment {
-    ArrayList<PatientInfo> allPatients = StoreDatabases.getAllPatients();
+    ArrayList<PatientInfo> allPatients = StoreDatabases.getAllPatients(); //Список всех пациентов
+    ArrayList<PatientInfo> filteredList = null; //список отфильтрованных пациентов
 
     LinearLayout searchBar;         //Строка поиска
     ImageButton clearSearchButton; //Кнопка очистки поиска (крестик)
-    RecyclerView allPatientsRecyclerView; //список всех пациентов
     EditText searchId;           //текст искомого ID
+    PatientMiniCardAdapter adapter;
+    RecyclerView allPatientsRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -46,8 +52,8 @@ public class SearchFragment extends Fragment {
         allPatientsRecyclerView = view.findViewById(R.id.search_recyclerView_list);
         searchId = view.findViewById(R.id.searchID);
 
-        Log.d("SearchFragment", "allPatients size = " + allPatients.size());
-        PatientMiniCardAdapter adapter = new PatientMiniCardAdapter(getContext(), allPatients);
+        //Log.d("SearchFragment", "allPatients size = " + allPatients.size());
+        adapter = new PatientMiniCardAdapter(getContext(), allPatients);
         allPatientsRecyclerView.setAdapter(adapter);
 
     }
@@ -65,6 +71,31 @@ public class SearchFragment extends Fragment {
                 InputMethodManager showKeyboard = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 showKeyboard.showSoftInput(searchId, InputMethodManager.SHOW_IMPLICIT);
             }
+        });
+
+
+        //Фильтр вводимого текста
+        searchId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String searchID = s.toString();
+                filteredList = new ArrayList<>();
+                for (PatientInfo patient : allPatients) {
+                    if (String.valueOf(patient.getId()).contains(searchID)) {
+                        filteredList.add(patient);
+                    }
+                }
+
+                //adapter = new PatientMiniCardAdapter(getContext(), filteredList);
+                //allPatientsRecyclerView.setAdapter(adapter);
+                adapter.updateList(filteredList);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
 
     }

@@ -15,7 +15,7 @@ import java.util.List;
 //Адаптер для списка карточек RecyclerView
 public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCardAdapter.ViewHolder> {
     private final LayoutInflater inflater;
-    private final List<PatientInfo> patients;
+    private List<PatientInfo> patients;
 
     PatientMiniCardAdapter(Context context, List<PatientInfo> patients){
         this.patients = patients;
@@ -68,4 +68,11 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
             idView = view.findViewById(R.id.id_name_card_list_item);
         }
     }
+
+    //Объект выводимого списка при поиске нужного ID
+    public void updateList(List<PatientInfo> filteredList) {
+        this.patients = filteredList;
+        notifyDataSetChanged(); // сообщает адаптеру, что данные изменились
+    }
+
 }
