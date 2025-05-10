@@ -1,4 +1,4 @@
-package com.example.university_coursework;
+package com.example.university_coursework.fragments;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.university_coursework.R;
 import com.example.university_coursework.database.PatientInfo;
 
 import java.util.List;
@@ -17,9 +18,17 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
     private final LayoutInflater inflater;
     private List<PatientInfo> patients;
 
-    public PatientMiniCardAdapter(Context context, List<PatientInfo> patients){
+    //Интерфейс для обработки нажатия на элемент списка
+    interface OnStateClickListener{
+        void onStateClick(PatientInfo patient, int position);
+    }
+    private final OnStateClickListener onClickListener;
+
+
+    public PatientMiniCardAdapter(Context context, List<PatientInfo> patients, OnStateClickListener onClickListener){
         this.patients = patients;
         this.inflater = LayoutInflater.from(context);
+        this.onClickListener = onClickListener;
     }
 
     //Возвращает объект ViewHolder, который будет хранить данные по одному объекту PatientMiniCard
@@ -43,6 +52,16 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         holder.diagnosisView.setText(diagnosis + " " + patient.getDiagnosis());
         holder.policyNumberView.setText(String.valueOf(patient.getPolicyNumber()));
         holder.idView.setText("ID: " + patient.getId());
+
+        // обработка нажатия
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                // вызываем метод слушателя, передавая ему данные
+                onClickListener.onStateClick(patient, position);
+            }
+        });
 
     }
 
@@ -69,10 +88,10 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         }
     }
 
-    //Объект выводимого списка при поиске нужного ID
+    //Фильтр выводимого списка при поиске нужного ID
     public void updateList(List<PatientInfo> filteredList) {
         this.patients = filteredList;
-        notifyDataSetChanged(); // сообщает адаптеру, что данные изменились
+        notifyDataSetChanged();
     }
 
 }

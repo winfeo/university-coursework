@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class StoreDatabases {
     private static ArrayList<PatientInfo> allPatients;
     private static ArrayList<PatientInfo> doctorsPatients;
+    private static ArrayList<DoctorInfo> allDoctors;
 
     public static void setAllPatients(ArrayList<PatientInfo> currentAllPatients) {
         allPatients = currentAllPatients;

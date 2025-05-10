@@ -11,11 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import com.example.university_coursework.NotificationList;
-import com.example.university_coursework.PatientMiniCardAdapter;
+import com.example.university_coursework.PatientCard;
 import com.example.university_coursework.R;
 import com.example.university_coursework.database.*;
 
@@ -31,8 +32,19 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // определяем слушателя нажатия элемента в списке
+        PatientMiniCardAdapter.OnStateClickListener stateClickListener = new PatientMiniCardAdapter.OnStateClickListener() {
+            @Override
+            public void onStateClick(PatientInfo patient, int position) {
+
+                Intent intent = new Intent(view.getContext(), PatientCard.class);
+                intent.putExtra("patient_object", patient);
+                startActivity(intent);
+            }
+        };
+
         RecyclerView recyclerView = view.findViewById(R.id.patient_recyclerView_list);
-        PatientMiniCardAdapter adapter = new PatientMiniCardAdapter(getContext(), doctorsPatients);
+        PatientMiniCardAdapter adapter = new PatientMiniCardAdapter(getContext(), doctorsPatients, stateClickListener);
         recyclerView.setAdapter(adapter);
 
         TextView patientsNumber = view.findViewById(R.id.patientNumber);

@@ -15,8 +15,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import com.example.university_coursework.PatientMiniCardAdapter;
 import com.example.university_coursework.R;
 import com.example.university_coursework.database.*;
 
@@ -44,13 +44,23 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // определяем слушателя нажатия элемента в списке
+        PatientMiniCardAdapter.OnStateClickListener stateClickListener = new PatientMiniCardAdapter.OnStateClickListener() {
+            @Override
+            public void onStateClick(PatientInfo patient, int position) {
+
+                Toast.makeText(getContext(), "Был выбран пункт " + patient.getSurname(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
+
         searchBar = view.findViewById(R.id.search_bar);
         clearSearchButton = view.findViewById(R.id.clear_search_bar);
         allPatientsRecyclerView = view.findViewById(R.id.search_recyclerView_list);
         searchId = view.findViewById(R.id.searchID);
 
         //Log.d("SearchFragment", "allPatients size = " + allPatients.size());
-        adapter = new PatientMiniCardAdapter(getContext(), allPatients);
+        adapter = new PatientMiniCardAdapter(getContext(), allPatients, stateClickListener);
         allPatientsRecyclerView.setAdapter(adapter);
 
     }

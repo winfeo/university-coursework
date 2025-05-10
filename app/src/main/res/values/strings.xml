@@ -52,7 +52,15 @@
     <!-- Текст для карты пациента -->
     <string name="patient_leadingPhysician">Ведущий врач:</string>
     <string name="patient_medicalHistoryTitle">История болезни:</string>
+    <string name="patient_personalData">Персональные данные:</string>
     <string name="patient_prescribedMedications">Назначения</string>
     <string name="patient_medicalHistory">История</string>
     <string name="patient_button">Редактировать</string>
+    <string name="patient_toolbarTitle">Медицинская карта пациента</string>
+    <string name="patient_FIO">ФИО:</string>
+    <string name="patient_birthDate">Дата рождения:</string>
+    <string name="patient_snils">СНИЛС:</string>
+    <string name="patient_registrationDate">Дата обращения в клинику:</string>
+
+
 </resources>
