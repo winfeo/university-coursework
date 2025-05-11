@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,10 +33,10 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // определяем слушателя нажатия элемента в списке
+        // слушатель нажатия элемента в списке
         PatientMiniCardAdapter.OnStateClickListener stateClickListener = new PatientMiniCardAdapter.OnStateClickListener() {
             @Override
-            public void onStateClick(PatientInfo patient, int position) {
+            public void onStateClick(PatientInfo patient, int position, View view) {
                 Intent intent = new Intent(view.getContext(), PatientCard.class);
                 intent.putExtra("patient_object", patient);
                 startActivity(intent);

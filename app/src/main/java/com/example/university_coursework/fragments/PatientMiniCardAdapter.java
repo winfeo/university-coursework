@@ -1,13 +1,17 @@
 package com.example.university_coursework.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.university_coursework.PatientCard;
 import com.example.university_coursework.R;
 import com.example.university_coursework.database.PatientInfo;
 
@@ -20,7 +24,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
 
     //Интерфейс для обработки нажатия на элемент списка
     interface OnStateClickListener{
-        void onStateClick(PatientInfo patient, int position);
+        void onStateClick(PatientInfo patient, int position, View view);
     }
     private final OnStateClickListener onClickListener;
 
@@ -53,13 +57,11 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         holder.policyNumberView.setText(String.valueOf(patient.getPolicyNumber()));
         holder.idView.setText("ID: " + patient.getId());
 
-        // обработка нажатия
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+        // обработка нажатия на кнопку "Посмотреть карточку"
+        holder.openCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                // вызываем метод слушателя, передавая ему данные
-                onClickListener.onStateClick(patient, position);
+            public void onClick(View view) {
+                onClickListener.onStateClick(patient, position, view);
             }
         });
 
@@ -76,6 +78,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         final TextView fioView;
         final TextView ageAndGenderView, diagnosisView;
         final TextView policyNumberView, idView;
+        Button openCardButton;
 
         ViewHolder(View view){
             super(view);
@@ -85,6 +88,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
             diagnosisView = view.findViewById(R.id.diagnosis_name_card_list_item);
             policyNumberView = view.findViewById(R.id.policy_name_card_list_item);
             idView = view.findViewById(R.id.id_name_card_list_item);
+            openCardButton = view.findViewById(R.id.detailsButton);
         }
     }
 
