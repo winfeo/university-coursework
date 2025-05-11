@@ -1,5 +1,7 @@
 package com.example.university_coursework;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -16,11 +18,24 @@ import java.util.ArrayList;
 
 public class PatientCard extends AppCompatActivity {
     PatientInfo patient;
+    TextView patient_prescribedMedications;
+    TextView patient_medicalHistory;
+    private ActivityResultLauncher<Intent> activityResultLauncher; //колбек для отображение отредакт. инфы
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_page);
+
+        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        patient_prescribedMedications.setText(data.getStringExtra("changed_medications"));
+                        patient_medicalHistory.setText(data.getStringExtra("changed_history"));
+                    }
+                }
+        );
 
         //Получаем объект пациента (нажатая карточка)
         patient = (PatientInfo) getIntent().getSerializableExtra("patient_object");
@@ -57,7 +72,7 @@ public class PatientCard extends AppCompatActivity {
                 intent.putExtra("patient_prescribedMedications", patient.getPrescribedMedications());
                 intent.putExtra("patient_medicalHistory", patient.getMedicalHistory());
                 intent.putExtra("patient_id", patient.getId());
-                startActivity(intent);
+                activityResultLauncher.launch(intent);
             }
         });
     }
@@ -114,10 +129,10 @@ public class PatientCard extends AppCompatActivity {
         TextView patient_registrationDate = findViewById(R.id.patient_registrationDate);
         patient_registrationDate.setText(getString(R.string.patient_registrationDate) + " " + patient.getRegistrationDate());
 
-        TextView patient_prescribedMedications = findViewById(R.id.patient_prescribedMedications);
+        patient_prescribedMedications = findViewById(R.id.patient_prescribedMedications);
         patient_prescribedMedications.setText(patient.getPrescribedMedications());
 
-        TextView patient_medicalHistory = findViewById(R.id.patient_medicalHistory);
+        patient_medicalHistory = findViewById(R.id.patient_medicalHistory);
         patient_medicalHistory.setText(patient.getMedicalHistory());
 
     }

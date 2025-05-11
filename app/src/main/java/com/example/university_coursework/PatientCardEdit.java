@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -115,11 +116,20 @@ public class PatientCardEdit extends AppCompatActivity {
                 saveChangesDialog();
             }
             else{
-                finish();
+                saveChangedForCallback();
                 return true;
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (TEXT_CHANGED) {
+            saveChangesDialog();
+        } else {
+            saveChangedForCallback();
+        }
     }
 
     private void saveChangesDialog(){
@@ -149,7 +159,6 @@ public class PatientCardEdit extends AppCompatActivity {
 
 
                 Toast toast = Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
                 toast.show();
             }
         });
@@ -188,4 +197,13 @@ public class PatientCardEdit extends AppCompatActivity {
 
         dbPatients.close();
     }
+
+    private void saveChangedForCallback(){
+        Intent intent = new Intent();
+        intent.putExtra("changed_medications", prescribedMedications);
+        intent.putExtra("changed_history", medicalHistory);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
 }
