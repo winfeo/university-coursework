@@ -56,6 +56,7 @@ public class PatientCard extends AppCompatActivity {
                 Intent intent = new Intent(PatientCard.this, PatientCardEdit.class);
                 intent.putExtra("patient_prescribedMedications", patient.getPrescribedMedications());
                 intent.putExtra("patient_medicalHistory", patient.getMedicalHistory());
+                intent.putExtra("patient_id", patient.getId());
                 startActivity(intent);
             }
         });

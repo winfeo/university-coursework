@@ -38,6 +38,8 @@
     <string name="exit">Выйти из аккаунта</string>
     <string name="exitDialogNO">Отмена</string>
     <string name="exitDialogYES">Выйти</string>
+    <string name="exitDialogSAVE">Сохранить</string>
+    <string name="exitDialogBACK">Вернуться</string>
     <string name="exitDialog">Выход</string>
     <string name="exitTextConfirmation">Вы уверены, что хотите выйти из аккаунта?</string>
     <string name="appInfoConfirmation">Понятно</string>
@@ -63,6 +65,8 @@
     <string name="patient_registrationDate">Дата обращения в клинику:</string>
     <string name="patient_saveButton">Сохранить</string>
     <string name="patient_editPatientHistoryTitle">Редактирование истории</string>
+    <string name="patient_saveTextConfirmation">Изменённый текст не будет сохранён</string>
+    <string name="patient_saveTextConfirmationTitle">Вернуться к карте пациента?</string>
 
 
 </resources>

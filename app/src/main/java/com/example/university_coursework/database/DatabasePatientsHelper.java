@@ -64,7 +64,7 @@ public class DatabasePatientsHelper extends SQLiteOpenHelper {
         Log.d("DatabasePatientsHelper", "Путь = " + DATABASE_PATH);
     }
 
-    public SQLiteDatabase open() {
+    public static SQLiteDatabase open() { //static?
         return SQLiteDatabase.openDatabase(DATABASE_PATH, null, SQLiteDatabase.OPEN_READWRITE);
     }
 

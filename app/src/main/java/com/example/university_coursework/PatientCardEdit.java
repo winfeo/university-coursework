@@ -3,13 +3,21 @@ package com.example.university_coursework;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.university_coursework.database.*;
 
@@ -18,7 +26,11 @@ import java.util.ArrayList;
 public class PatientCardEdit extends AppCompatActivity {
     EditText prescribedMedicationsText;
     EditText medicalHistoryText;
+    String prescribedMedications;
+    String medicalHistory;
+
     ArrayList<PatientInfo> allPatients = StoreDatabases.getAllPatients();
+    private String PATIENT_ID;
     private boolean TEXT_CHANGED = false;
 
     @Override
@@ -34,8 +46,9 @@ public class PatientCardEdit extends AppCompatActivity {
             getSupportActionBar().setTitle(getText(R.string.patient_editPatientHistoryTitle));
         }
 
-        String prescribedMedications = getIntent().getStringExtra("patient_prescribedMedications");
-        String medicalHistory = getIntent().getStringExtra("patient_medicalHistory");
+        prescribedMedications = getIntent().getStringExtra("patient_prescribedMedications");
+        medicalHistory = getIntent().getStringExtra("patient_medicalHistory");
+        PATIENT_ID = getIntent().getStringExtra("patient_id");
 
         prescribedMedicationsText = findViewById(R.id.patient_prescribedMedicationsEdit);
         prescribedMedicationsText.setText(prescribedMedications);
@@ -56,16 +69,14 @@ public class PatientCardEdit extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                prescribedMedications = charSequence.toString();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                TEXT_CHANGED = true;
             }
         });
-
-
 
         medicalHistoryText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -73,12 +84,12 @@ public class PatientCardEdit extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                medicalHistory = charSequence.toString();
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                TEXT_CHANGED = true;
             }
         });
 
@@ -87,10 +98,9 @@ public class PatientCardEdit extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
+                saveChangedInDatabase();
                 TEXT_CHANGED = false;
+                Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -101,14 +111,81 @@ public class PatientCardEdit extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            if(!TEXT_CHANGED){
+            if(TEXT_CHANGED){
+                saveChangesDialog();
+            }
+            else{
                 finish();
                 return true;
             }
-            else{
-
-            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void saveChangesDialog(){
+        //Диалоговое окно с информацией о приложении
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_save_changes_confirmation, null);
+        AlertDialog dialogInfo = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setTitle(getText(R.string.patient_saveTextConfirmationTitle))
+                .setCancelable(false)
+                .create();
+
+        //для отображения без зданего фона
+        if (dialogInfo.getWindow() != null) {
+            dialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+
+
+
+        dialogView.findViewById(R.id.buttonSAVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+
+
+
+                Toast toast = Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 100);
+                toast.show();
+            }
+        });
+
+        dialogView.findViewById(R.id.buttonBACK).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        dialogInfo.show();
+    }
+
+    private void saveChangedInDatabase(){
+
+        //Обновляем данные в локальном списке
+        for(PatientInfo patient : allPatients){
+            if(patient.getId().equals(PATIENT_ID)){
+                patient.setPrescribedMedications(prescribedMedications);
+                patient.setMedicalHistory(medicalHistory);
+            }
+        }
+
+        //Записываем обновления в БД
+        SQLiteDatabase dbPatients = DatabasePatientsHelper.open();
+
+        ContentValues values = new ContentValues();
+        values.put("medical_history", medicalHistory);
+        values.put("prescribed_medications", prescribedMedications);
+
+        String whereClause = "_id = ?";
+        String[] whereArgs = { PATIENT_ID };
+        dbPatients.update(DatabasePatientsHelper.TITLE, values, whereClause, whereArgs);
+
+        dbPatients.close();
     }
 }
