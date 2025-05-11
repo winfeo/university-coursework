@@ -39,10 +39,11 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TextView fio = getView().findViewById(R.id.profileFIO);
-        fio.setText(DoctorInfo.getSurname() + " " + DoctorInfo.getName() + "\n" + DoctorInfo.getFathersName());
+        fio.setText(DoctorInfo.getObject().getSurname() + " " +
+                DoctorInfo.getObject().getName() + "\n" + DoctorInfo.getObject().getFathersName());
 
         TextView email = getView().findViewById(R.id.profileEmail);
-        email.setText(DoctorInfo.getEmail());
+        email.setText(DoctorInfo.getObject().getEmail());
 
         settingsButton = view.findViewById(R.id.settingsButton);
         appInfoButton = view.findViewById(R.id.appInfoButton);

@@ -15,6 +15,9 @@ public class StoreDatabases {
     public static void setDoctorsPatients(ArrayList<PatientInfo> currentDoctorsPatients) {
         doctorsPatients = currentDoctorsPatients;
     }
+    public static void setAllDoctors(ArrayList<DoctorInfo> currentAllDoctors) {
+        allDoctors = currentAllDoctors;
+    }
 
     public static ArrayList<PatientInfo> getAllPatients() {
         return allPatients;
@@ -24,8 +27,13 @@ public class StoreDatabases {
         return doctorsPatients;
     }
 
+    public static ArrayList<DoctorInfo> getAllDoctors() {
+        return allDoctors;
+    }
+
     public static void clearLocaleDatabases(){
         allPatients = null;
         doctorsPatients = null;
+        allDoctors = null;
     }
 }

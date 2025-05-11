@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.university_coursework.database.*;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private EditText loginText;
     private EditText passwordText;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     public DatabaseDoctorsHelper dbDoctorsHelper;
     public SQLiteDatabase dbDoctors;
     public Cursor userCursor; //курсор для получения БД докторов
+
+    ArrayList<DoctorInfo> allDoctors = new ArrayList<>();
 
 
     @Override
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         userCursor = dbDoctors.rawQuery("select * from " + dbDoctorsHelper.TABLE,null);
         Log.d("DatabaseDoctorHelper", Integer.toString(userCursor.getCount()));
 
+        fillDoctorsArray();
+
     }
 
     public void enterButton(View view){
@@ -62,15 +68,13 @@ public class MainActivity extends AppCompatActivity {
             if(userLogin.equals(inputLogin)){
                 String userPassword = userCursor.getString(userCursor.getColumnIndexOrThrow("password"));
                 if(userPassword.equals(inputPassword)){
-                    //получаем данные о докторе и сохраняем их в объект
-                    String doctorId = userCursor.getString(userCursor.getColumnIndexOrThrow("_id"));
-                    String doctorName = userCursor.getString(userCursor.getColumnIndexOrThrow("name"));
-                    String doctorSurname = userCursor.getString(userCursor.getColumnIndexOrThrow("surname"));
-                    String doctorFathersName = userCursor.getString(userCursor.getColumnIndexOrThrow("fathers_name"));
-                    String doctorEmail = userCursor.getString(userCursor.getColumnIndexOrThrow("email"));
-                    DoctorInfo doctorObject = new DoctorInfo(doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
-                    //сохраняем экземпляр класса для использования в других активностях
-                    //doctorObject.saveObject(doctorObject);
+                    //сохраняем объект доктора, который входит в систему
+                    // для использования в других активностях, в static поле класса
+                    for(DoctorInfo doctor: allDoctors){
+                        if(doctor.getId().equals(userCursor.getString(userCursor.getColumnIndexOrThrow("_id")))){
+                            DoctorInfo.saveObject(doctor);
+                        }
+                    }
 
                     startActivity(new Intent(this, HomeActivity.class));
                     finish();
@@ -84,6 +88,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    //Добавляем всех докторов из системы и сохраняем в списке
+    private void fillDoctorsArray(){
+        while(userCursor.moveToNext()){
+            String doctorId = userCursor.getString(userCursor.getColumnIndexOrThrow("_id"));
+            String doctorName = userCursor.getString(userCursor.getColumnIndexOrThrow("name"));
+            String doctorSurname = userCursor.getString(userCursor.getColumnIndexOrThrow("surname"));
+            String doctorFathersName = userCursor.getString(userCursor.getColumnIndexOrThrow("fathers_name"));
+            String doctorEmail = userCursor.getString(userCursor.getColumnIndexOrThrow("email"));
+            DoctorInfo doctorObject = new DoctorInfo(doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
+
+            allDoctors.add(doctorObject);
+        }
+        StoreDatabases.setAllDoctors(allDoctors);
     }
 
     @Override

@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity {
     public void fillDoctorsPatientsArrayList(){
         for (PatientInfo object : allPatients){
             //Log.d("CurrentComparison", object.getLeadingPhysician() + " - " + DoctorInfo.getId());
-            if(object.getLeadingPhysician().equals(DoctorInfo.getId())){
+            if(object.getLeadingPhysician().equals(DoctorInfo.getObject().getId())){
                 doctorsPatients.add(object);
             }
         }

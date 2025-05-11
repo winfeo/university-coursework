@@ -51,13 +51,14 @@ public class HomeFragment extends Fragment {
         patientsNumber.setText(Integer.toString(doctorsPatients.size()));
 
         TextView greetingPhrase = view.findViewById(R.id.greetingPhrase);
-        greetingPhrase.setText(getString(R.string.greetings) + " " + DoctorInfo.getName() + "!");
+        greetingPhrase.setText(getString(R.string.greetings) + " " + DoctorInfo.getObject().getName() + "!");
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
+        //Уведомления
         ImageButton button = getView().findViewById(R.id.notificationButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

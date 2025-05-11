@@ -2,12 +2,12 @@ package com.example.university_coursework.database;
 
 // Класс для хранения информации по доктору (который зашёл в приложение)
 public class DoctorInfo {
-    private static String id;
-    private static String name;
-    private static String surname;
-    private static String fathersName;
-    private static String email;
-    //private static DoctorInfo doctorInfoObject;
+    private String id;
+    private String name;
+    private String surname;
+    private String fathersName;
+    private String email;
+    private static DoctorInfo doctorInfoObject;
 
     public DoctorInfo(String id, String name, String surname, String fathersName, String email){
         this.id = id;
@@ -17,25 +17,24 @@ public class DoctorInfo {
         this.email = email;
     }
 
-    /*
-    public static void saveObject(DoctorInfo doctorInfoObject){
-        doctorInfoObject = doctorInfoObject;
+    public static void saveObject(DoctorInfo currentDoctorInfoObject){
+        doctorInfoObject = currentDoctorInfoObject;
     }
     public static DoctorInfo getObject(){
         return doctorInfoObject;
     }
 
-     */
 
-    public static String getId() { return id; }
-    public static String getName() { return name; }
-    public static String getSurname() { return surname; }
-    public static String getFathersName() { return fathersName; }
-    public static String getEmail() { return email; }
 
-    public void setId(String id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setSurname(String surname) { this.surname = surname; }
-    public void setFathersName(String fathersName) { this.fathersName = fathersName; }
-    public void setEmail(String email) { this.email = email; }
+    public String getId() { return this.id; }
+    public String getName() { return this.name; }
+    public String getSurname() { return this.surname; }
+    public String getFathersName() { return this.fathersName; }
+    public String getEmail() { return this.email; }
+
+    public void setId(String currentId) { this.id = currentId; }
+    public void setName(String currentName) { this.name = currentName; }
+    public void setSurname(String currentSurname) { this.surname = currentSurname; }
+    public void setFathersName(String currentFathersName) { this.fathersName = currentFathersName; }
+    public void setEmail(String currentEmail) { this.email = currentEmail; }
 }

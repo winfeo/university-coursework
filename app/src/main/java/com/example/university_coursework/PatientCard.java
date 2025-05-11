@@ -5,9 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.university_coursework.database.PatientInfo;
+import com.example.university_coursework.database.*;
+
+import java.util.ArrayList;
 
 public class PatientCard extends AppCompatActivity {
 
@@ -25,6 +29,13 @@ public class PatientCard extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle(getText(R.string.patient_toolbarTitle));
+        }
+
+        if(patient.getLeadingPhysician().equals(DoctorInfo.getObject().getId())){
+            Button editButton = findViewById(R.id.patient_editButton);
+            editButton.setClickable(true);
+            editButton.setVisibility(Button.VISIBLE);
+
         }
 
         //Устанавливаем текст элементам карточки
@@ -47,8 +58,19 @@ public class PatientCard extends AppCompatActivity {
         TextView patient_diagnosis = findViewById(R.id.patient_diagnosis);
         patient_diagnosis.setText(patient.getDiagnosis());
 
+
+
+        String leadingPhysicianId = patient.getLeadingPhysician();
+        DoctorInfo doctorObject = null;
+        ArrayList<DoctorInfo> allDoctors = StoreDatabases.getAllDoctors();
+        for(DoctorInfo doctor: allDoctors){
+            if(doctor.getId().equals(leadingPhysicianId)){
+                doctorObject = doctor;
+            }
+        }
         TextView patient_leadingPhysician = findViewById(R.id.patient_leadingPhysician);
-        patient_leadingPhysician.setText(patient.getLeadingPhysician());
+        patient_leadingPhysician.setText(doctorObject.getSurname() + " " +
+                doctorObject.getName().charAt(0) + ". " + doctorObject.getFathersName().charAt(0) + ".");
 
         TextView patient_Id = findViewById(R.id.patient_Id);
         patient_Id.setText(patient.getId());
