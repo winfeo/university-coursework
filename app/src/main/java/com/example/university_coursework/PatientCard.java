@@ -3,6 +3,7 @@ package com.example.university_coursework;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.example.university_coursework.database.*;
 import java.util.ArrayList;
 
 public class PatientCard extends AppCompatActivity {
+    PatientInfo patient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +23,7 @@ public class PatientCard extends AppCompatActivity {
         setContentView(R.layout.patient_page);
 
         //Получаем объект пациента (нажатая карточка)
-        PatientInfo patient = (PatientInfo) getIntent().getSerializableExtra("patient_object");
+        patient = (PatientInfo) getIntent().getSerializableExtra("patient_object");
 
         Toolbar toolbar = findViewById(R.id.patientToolbar);
         setSupportActionBar(toolbar);
@@ -39,8 +41,24 @@ public class PatientCard extends AppCompatActivity {
         }
 
         //Устанавливаем текст элементам карточки
-        fillData(patient);
+        fillData();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Button editButton = findViewById(R.id.patient_editButton);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PatientCard.this, PatientCardEdit.class);
+                intent.putExtra("patient_prescribedMedications", patient.getPrescribedMedications());
+                intent.putExtra("patient_medicalHistory", patient.getMedicalHistory());
+                startActivity(intent);
+            }
+        });
     }
 
     // Нажатие на стрелку "назад"
@@ -54,11 +72,9 @@ public class PatientCard extends AppCompatActivity {
     }
 
 
-    public void fillData(PatientInfo patient){
+    public void fillData(){
         TextView patient_diagnosis = findViewById(R.id.patient_diagnosis);
         patient_diagnosis.setText(patient.getDiagnosis());
-
-
 
         String leadingPhysicianId = patient.getLeadingPhysician();
         DoctorInfo doctorObject = null;

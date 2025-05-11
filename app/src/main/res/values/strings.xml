@@ -61,6 +61,8 @@
     <string name="patient_birthDate">Дата рождения:</string>
     <string name="patient_snils">СНИЛС:</string>
     <string name="patient_registrationDate">Дата обращения в клинику:</string>
+    <string name="patient_saveButton">Сохранить</string>
+    <string name="patient_editPatientHistoryTitle">Редактирование истории</string>
 
 
 </resources>
