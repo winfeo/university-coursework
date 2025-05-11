@@ -76,6 +76,7 @@ public class PatientCardEdit extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 TEXT_CHANGED = true;
+                turnOnButton();
             }
         });
 
@@ -91,6 +92,7 @@ public class PatientCardEdit extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 TEXT_CHANGED = true;
+                turnOnButton();
             }
         });
 
@@ -100,6 +102,7 @@ public class PatientCardEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveChangedInDatabase();
+                turnOffButton();
                 TEXT_CHANGED = false;
                 Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT).show();
             }
@@ -204,6 +207,18 @@ public class PatientCardEdit extends AppCompatActivity {
         intent.putExtra("changed_history", medicalHistory);
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    private void turnOnButton(){
+        Button buttonSAVE = findViewById(R.id.patient_saveButton);
+        buttonSAVE.setClickable(true);
+        buttonSAVE.setEnabled(true);
+    }
+
+    private void turnOffButton(){
+        Button buttonSAVE = findViewById(R.id.patient_saveButton);
+        buttonSAVE.setClickable(false);
+        buttonSAVE.setEnabled(false);
     }
 
 }

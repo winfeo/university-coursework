@@ -66,10 +66,13 @@
 
     <Button
         android:id="@+id/patient_saveButton"
+        android:clickable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="@string/patient_saveButton"
+        android:enabled="false"
+
         android:background="@drawable/rectangle_card3"
         android:paddingHorizontal="64dp"
 
