@@ -1,6 +1,7 @@
 package com.example.university_coursework.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.university_coursework.PatientCard;
 import com.example.university_coursework.R;
 import com.example.university_coursework.database.*;
 
@@ -48,9 +50,9 @@ public class SearchFragment extends Fragment {
         PatientMiniCardAdapter.OnStateClickListener stateClickListener = new PatientMiniCardAdapter.OnStateClickListener() {
             @Override
             public void onStateClick(PatientInfo patient, int position) {
-
-                Toast.makeText(getContext(), "Был выбран пункт " + patient.getSurname(),
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(view.getContext(), PatientCard.class);
+                intent.putExtra("patient_object", patient);
+                startActivity(intent);
             }
         };
 

@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
         PatientMiniCardAdapter.OnStateClickListener stateClickListener = new PatientMiniCardAdapter.OnStateClickListener() {
             @Override
             public void onStateClick(PatientInfo patient, int position) {
-
                 Intent intent = new Intent(view.getContext(), PatientCard.class);
                 intent.putExtra("patient_object", patient);
                 startActivity(intent);
