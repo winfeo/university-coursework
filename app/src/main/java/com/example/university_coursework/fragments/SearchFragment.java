@@ -31,7 +31,7 @@ public class SearchFragment extends Fragment {
 
     LinearLayout searchBar;         //Строка поиска
     ImageButton clearSearchButton; //Кнопка очистки поиска (крестик)
-    EditText searchId;           //текст искомого ID
+    EditText searchId;           //EditText искомого ID
     PatientMiniCardAdapter adapter;
     RecyclerView allPatientsRecyclerView;
 
@@ -102,6 +102,25 @@ public class SearchFragment extends Fragment {
                 //adapter = new PatientMiniCardAdapter(getContext(), filteredList);
                 //allPatientsRecyclerView.setAdapter(adapter);
                 adapter.updateList(filteredList);
+
+                //Кнопка очистки вводимых данных
+                if(!searchID.isEmpty()){
+                    clearSearchButton.setClickable(true);
+                    clearSearchButton.setVisibility(View.VISIBLE);
+                }
+                else{
+                    clearSearchButton.setClickable(false);
+                    clearSearchButton.setVisibility(View.INVISIBLE);
+                }
+
+                clearSearchButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        clearSearchButton.setClickable(false);
+                        clearSearchButton.setVisibility(View.INVISIBLE);
+                        searchId.setText("");
+                    }
+                });
             }
 
             @Override
