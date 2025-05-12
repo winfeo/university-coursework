@@ -10,12 +10,34 @@
     android:background="@drawable/rectangle_card4"
     app:cardElevation="6dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginBottom="36dp"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/info"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/patient_saveTextConfirmationTitle"
+            android:textColor="@color/black"
+            android:layout_marginStart="14dp"/>
+
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/patient_saveTextConfirmation"
         android:textSize="16sp"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:layout_marginBottom="24dp" />
 
     <LinearLayout

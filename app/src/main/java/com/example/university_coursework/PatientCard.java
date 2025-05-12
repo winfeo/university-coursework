@@ -17,16 +17,18 @@ import com.example.university_coursework.database.*;
 import java.util.ArrayList;
 
 public class PatientCard extends AppCompatActivity {
+    ArrayList<PatientInfo> allPatients = StoreDatabases.getAllPatients();
     PatientInfo patient;
     TextView patient_prescribedMedications;
     TextView patient_medicalHistory;
-    private ActivityResultLauncher<Intent> activityResultLauncher; //колбек для отображение отредакт. инфы
+    //private ActivityResultLauncher<Intent> activityResultLauncher; //колбек для отображение отредакт. инфы
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_page);
 
+        /*
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 result -> {
                     if (result.getResultCode() == RESULT_OK) {
@@ -37,8 +39,17 @@ public class PatientCard extends AppCompatActivity {
                 }
         );
 
-        //Получаем объект пациента (нажатая карточка)
-        patient = (PatientInfo) getIntent().getSerializableExtra("patient_object");
+         */
+
+        //Получаем объект пациента (нажатая карточка) ???????
+        //patient = (PatientInfo) getIntent().getSerializableExtra("patient_object");
+        String current_patient_id = getIntent().getStringExtra("patient_id");
+        for(PatientInfo current_patient : allPatients){
+            if(current_patient.getId().equals(current_patient_id)){
+                patient = current_patient;
+            }
+        }
+
 
         Toolbar toolbar = findViewById(R.id.patientToolbar);
         setSupportActionBar(toolbar);
@@ -55,9 +66,15 @@ public class PatientCard extends AppCompatActivity {
 
         }
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         //Устанавливаем текст элементам карточки
         fillData();
-
     }
 
     @Override
@@ -72,7 +89,8 @@ public class PatientCard extends AppCompatActivity {
                 intent.putExtra("patient_prescribedMedications", patient.getPrescribedMedications());
                 intent.putExtra("patient_medicalHistory", patient.getMedicalHistory());
                 intent.putExtra("patient_id", patient.getId());
-                activityResultLauncher.launch(intent);
+                //activityResultLauncher.launch(intent);
+                startActivity(intent);
             }
         });
     }

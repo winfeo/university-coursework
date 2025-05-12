@@ -102,6 +102,7 @@ public class PatientCardEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveChangedInDatabase();
+                //saveChangedForCallback(RESULT_OK);
                 turnOffButton();
                 TEXT_CHANGED = false;
                 Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT).show();
@@ -119,9 +120,9 @@ public class PatientCardEdit extends AppCompatActivity {
                 saveChangesDialog();
             }
             else{
-                saveChangedForCallback();
-                return true;
+                finish();
             }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -130,8 +131,9 @@ public class PatientCardEdit extends AppCompatActivity {
     public void onBackPressed() {
         if (TEXT_CHANGED) {
             saveChangesDialog();
-        } else {
-            saveChangedForCallback();
+        }
+        else{
+            finish();
         }
     }
 
@@ -140,7 +142,6 @@ public class PatientCardEdit extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_save_changes_confirmation, null);
         AlertDialog dialogInfo = new AlertDialog.Builder(this)
                 .setView(dialogView)
-                .setTitle(getText(R.string.patient_saveTextConfirmationTitle))
                 .setCancelable(false)
                 .create();
 
@@ -149,30 +150,28 @@ public class PatientCardEdit extends AppCompatActivity {
             dialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
-
-
-
         dialogView.findViewById(R.id.buttonSAVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-
-
-
-                Toast toast = Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT);
-                toast.show();
+                saveChangedInDatabase();
+                //saveChangedForCallback(RESULT_OK);
+                turnOffButton();
+                TEXT_CHANGED = false;
+                Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT).show();
+                dialogInfo.dismiss();
+                finish();
             }
         });
 
         dialogView.findViewById(R.id.buttonBACK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //saveChangedForCallback(RESULT_CANCELED);
+                Toast.makeText(PatientCardEdit.this,"Данные не сохранены", Toast.LENGTH_SHORT).show();
+                dialogInfo.dismiss();
+                finish();
             }
         });
-
 
         dialogInfo.show();
     }
@@ -201,13 +200,15 @@ public class PatientCardEdit extends AppCompatActivity {
         dbPatients.close();
     }
 
-    private void saveChangedForCallback(){
+    /*
+    private void saveChangedForCallback(int RESULT){
         Intent intent = new Intent();
         intent.putExtra("changed_medications", prescribedMedications);
         intent.putExtra("changed_history", medicalHistory);
-        setResult(RESULT_OK, intent);
-        finish();
+        setResult(RESULT, intent);
     }
+
+     */
 
     private void turnOnButton(){
         Button buttonSAVE = findViewById(R.id.patient_saveButton);
