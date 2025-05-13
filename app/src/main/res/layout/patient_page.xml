@@ -23,13 +23,24 @@
         android:padding="15dp"
         android:layout_marginHorizontal="15dp">
 
-        <ImageView
-            android:id="@+id/patientImage"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/patientImage_CardView"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/ic_launcher"
+            app:cardCornerRadius="50dp"
+            android:elevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/patientImage"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@mipmap/ic_launcher"
+                />
+
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView"
@@ -40,7 +51,7 @@
             android:text="@string/diagnosis"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintStart_toEndOf="@+id/patientImage_CardView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -52,7 +63,7 @@
             android:text="Расстройство личности II степени"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintStart_toEndOf="@+id/patientImage_CardView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
@@ -64,7 +75,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/patient_leadingPhysician"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintStart_toEndOf="@+id/patientImage_CardView"
             app:layout_constraintTop_toBottomOf="@+id/patient_diagnosis" />
 
         <TextView
@@ -75,7 +86,7 @@
             android:textSize="14sp"
             android:layout_marginStart="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintStart_toEndOf="@+id/patientImage_CardView"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
@@ -91,7 +102,7 @@
             android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/patientImage"
+            app:layout_constraintStart_toEndOf="@+id/patientImage_CardView"
             app:layout_constraintTop_toBottomOf="@+id/patient_leadingPhysician"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
