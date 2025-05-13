@@ -3,8 +3,11 @@ package com.example.university_coursework;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.example.university_coursework.database.DatabasePatientsHelper;
@@ -16,6 +19,8 @@ import com.example.university_coursework.fragments.ProfileFragment;
 import com.example.university_coursework.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.example.university_coursework.fragments.*;
@@ -96,6 +101,7 @@ public class HomeActivity extends AppCompatActivity {
     //Вспомогательный метод для заполения полей объекта пациента
     private PatientInfo createPatientObject(Cursor userCursor){
         String id = userCursor.getString(userCursor.getColumnIndexOrThrow("_id"));
+        Bitmap photoPath = getPatientPhoto(id);
         String name = userCursor.getString(userCursor.getColumnIndexOrThrow("name"));
         String surname = userCursor.getString(userCursor.getColumnIndexOrThrow("surname"));
         String fathersName = userCursor.getString(userCursor.getColumnIndexOrThrow("fathers_name"));
@@ -112,7 +118,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         PatientInfo newObject = new PatientInfo(
-                R.drawable.ic_launcher_foreground,
+                photoPath,
                 id,
                 name,
                 surname,
@@ -132,8 +138,17 @@ public class HomeActivity extends AppCompatActivity {
         return newObject;
     }
 
+    private Bitmap getPatientPhoto(String id){
+        String photoPath = "patients_photo/patient_" + id.substring(4) + ".jpg";
+        try (InputStream inputStream = getAssets().open(photoPath)) {
+            return BitmapFactory.decodeStream(inputStream);
+        } catch (IOException e) {
+            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground);
+        }
+    }
+
     //Добавляем в список врача только его наблюдаемых пациентов
-    public void fillDoctorsPatientsArrayList(){
+    private void fillDoctorsPatientsArrayList(){
         for (PatientInfo object : allPatients){
             //Log.d("CurrentComparison", object.getLeadingPhysician() + " - " + DoctorInfo.getId());
             if(object.getLeadingPhysician().equals(DoctorInfo.getObject().getId())){
@@ -143,7 +158,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         userCursor.close();
         dbPatients.close();

@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onStateClick(PatientInfo patient, int position, View view) {
                 Intent intent = new Intent(view.getContext(), PatientCard.class);
-                intent.putExtra("patient_object", patient);
+                //intent.putExtra("patient_object", patient);
                 intent.putExtra("patient_id", patient.getId());
                 startActivity(intent);
             }

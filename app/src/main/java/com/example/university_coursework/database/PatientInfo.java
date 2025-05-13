@@ -1,10 +1,12 @@
 package com.example.university_coursework.database;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 //Класс для объекта мини-карточки пациента
 public class PatientInfo implements Serializable {
-    private int photoResource;
+    private Bitmap photoResource;
     private String id;
 
     private String name;
@@ -24,7 +26,7 @@ public class PatientInfo implements Serializable {
     private String medicalHistory;
 
 
-    public PatientInfo(int photoResource, String id, String name, String surname, String fathersName,
+    public PatientInfo(Bitmap photoResource, String id, String name, String surname, String fathersName,
                        int age, String gender, String birthDate, String diagnosis, String policyNumber,
                        String leadingPhysician, String snils, String registrationDate,
                        String prescribedMedications, String medicalHistory){
@@ -46,7 +48,7 @@ public class PatientInfo implements Serializable {
 
     }
 
-    public int getPhotoResource() { return photoResource; }
+    public Bitmap getPhotoResource() { return photoResource; }
     public String getId() {
         return id;
     }
@@ -73,7 +75,7 @@ public class PatientInfo implements Serializable {
     public String getMedicalHistory() { return medicalHistory; }
 
 
-    public void setPhotoResource(int photoResource) { this.photoResource = photoResource; }
+    public void setPhotoResource(Bitmap photoResource) { this.photoResource = photoResource; }
     public void setId(String id) {
         this.id = id;
     }

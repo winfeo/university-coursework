@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.university_coursework.database.*;
@@ -118,6 +119,9 @@ public class PatientCard extends AppCompatActivity {
                 doctorObject = doctor;
             }
         }
+        ImageView patientPhoto = findViewById(R.id.patientImage);
+        patientPhoto.setImageBitmap(patient.getPhotoResource());
+
         TextView patient_leadingPhysician = findViewById(R.id.patient_leadingPhysician);
         patient_leadingPhysician.setText(doctorObject.getSurname() + " " +
                 doctorObject.getName().charAt(0) + ". " + doctorObject.getFathersName().charAt(0) + ".");

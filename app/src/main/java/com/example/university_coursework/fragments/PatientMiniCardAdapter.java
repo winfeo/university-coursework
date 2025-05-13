@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +51,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         String diagnosis = holder.itemView.getContext().getString(R.string.diagnosis);
 
         PatientInfo patient = patients.get(position);
-        //holder.photoResource.setImageResource(patient.getPhotoResource());
+        holder.photoResource.setImageBitmap(patient.getPhotoResource());
         holder.fioView.setText(patient.getSurname() + " " + patient.getName() + " " + patient.getFathersName());
         holder.ageAndGenderView.setText(age + " " + patient.getAge() + "    " + gender + " " + patient.getGender());
         holder.diagnosisView.setText(diagnosis + " " + patient.getDiagnosis());
@@ -61,7 +62,11 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
         holder.openCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickListener.onStateClick(patient, position, view);
+                //Bitmap не сериализируется, его не получится передать в объекта пациента!!!!!!!?????
+                int currentPosition = holder.getAdapterPosition();
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    onClickListener.onStateClick(patients.get(currentPosition), currentPosition, view);
+                }
             }
         });
 
@@ -74,7 +79,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        //final ImageView photoResource;
+        final ImageView photoResource;
         final TextView fioView;
         final TextView ageAndGenderView, diagnosisView;
         final TextView policyNumberView, idView;
@@ -82,7 +87,7 @@ public class PatientMiniCardAdapter extends RecyclerView.Adapter<PatientMiniCard
 
         ViewHolder(View view){
             super(view);
-            //photoResource = view.findViewById(R.id.flag);
+            photoResource = view.findViewById(R.id.picture_card_list_item);
             fioView = view.findViewById(R.id.fio_card_list_item);
             ageAndGenderView = view.findViewById(R.id.age_gender_name_card_list_item);
             diagnosisView = view.findViewById(R.id.diagnosis_name_card_list_item);
