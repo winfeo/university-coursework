@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +38,9 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ImageView profilePhoto = view.findViewById(R.id.profileImage);
+        profilePhoto.setImageBitmap(DoctorInfo.getObject().getDoctorPhoto());
 
         TextView fio = getView().findViewById(R.id.profileFIO);
         fio.setText(DoctorInfo.getObject().getSurname() + " " +

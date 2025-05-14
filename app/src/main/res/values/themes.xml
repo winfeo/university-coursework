@@ -10,12 +10,18 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/mid_gray</item>
+
         <!-- Customize your theme here. -->
 
         <!-- Убрать название проекта -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Убрать статус бар вверху проекта -->
+    <style name="Theme.YourApp" parent="Theme.Material3.DayNight.NoActionBar">
+
     </style>
 
     <!-- Стиль для кастомной закруглённой кнопки -->

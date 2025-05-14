@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.university_coursework.database.*;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -94,15 +98,25 @@ public class MainActivity extends AppCompatActivity {
     private void fillDoctorsArray(){
         while(userCursor.moveToNext()){
             String doctorId = userCursor.getString(userCursor.getColumnIndexOrThrow("_id"));
+            Bitmap doctorPhoto = getPatientPhoto(doctorId);
             String doctorName = userCursor.getString(userCursor.getColumnIndexOrThrow("name"));
             String doctorSurname = userCursor.getString(userCursor.getColumnIndexOrThrow("surname"));
             String doctorFathersName = userCursor.getString(userCursor.getColumnIndexOrThrow("fathers_name"));
             String doctorEmail = userCursor.getString(userCursor.getColumnIndexOrThrow("email"));
-            DoctorInfo doctorObject = new DoctorInfo(doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
+            DoctorInfo doctorObject = new DoctorInfo(doctorPhoto, doctorId, doctorName, doctorSurname, doctorFathersName, doctorEmail);
 
             allDoctors.add(doctorObject);
         }
         StoreDatabases.setAllDoctors(allDoctors);
+    }
+
+    private Bitmap getPatientPhoto(String id){
+        String photoPath = "doctors_photo/doctor_" + id + ".jpg";
+        try (InputStream inputStream = getAssets().open(photoPath)) {
+            return BitmapFactory.decodeStream(inputStream);
+        } catch (IOException e) {
+            return BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher_foreground);
+        }
     }
 
     @Override
