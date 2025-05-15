@@ -14,6 +14,8 @@
     <string name="enterId">ID сотрудника</string>
     <string name="enterPassword">Пароль</string>
     <string name="enterButton">Войти</string>
+    <string name="wrongPasswordToast">Неверный логин или пароль</string>
+    <string name="fillTheGapsToast">Заполните все поля</string>
     <string name="helpInfo">В случае возникновения ошибки обратитесь к своему системному администратору</string>
 
     <!-- BottomNavigationView -->

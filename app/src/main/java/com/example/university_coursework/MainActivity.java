@@ -9,8 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.university_coursework.database.*;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Проверяем, что не пустые
         if (inputLogin.isEmpty() || inputPassword.isEmpty()) {
-            showError("Заполните все поля");
+            showError(getText(R.string.fillTheGapsToast).toString());
             return;
         }
 
@@ -87,12 +89,22 @@ public class MainActivity extends AppCompatActivity {
             }
             userCursor.moveToNext();
         }
-        showError("Неверный логин или пароль");
+        showError(getText(R.string.wrongPasswordToast).toString());
     }
 
     private void showError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, null);
+
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
     }
+
 
     //Добавляем всех докторов из системы и сохраняем в списке
     private void fillDoctorsArray(){
