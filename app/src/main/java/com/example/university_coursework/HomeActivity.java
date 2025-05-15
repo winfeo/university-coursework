@@ -3,6 +3,8 @@ package com.example.university_coursework;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,6 +38,13 @@ public class HomeActivity extends AppCompatActivity {
     public SQLiteDatabase dbPatients;
     public Cursor userCursor; //курсор для получения запросов БД пациентов
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences prefs = newBase.getSharedPreferences("settings", MODE_PRIVATE);
+        String lang = prefs.getString("app_language", "ru"); // язык по умолчанию — русский
+        Context context = LocaleHelper.setAppLocale(newBase, lang);
+        super.attachBaseContext(context);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

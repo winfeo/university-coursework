@@ -5,7 +5,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +25,14 @@ public class PatientCard extends AppCompatActivity {
     TextView patient_prescribedMedications;
     TextView patient_medicalHistory;
     //private ActivityResultLauncher<Intent> activityResultLauncher; //колбек для отображение отредакт. инфы
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences prefs = newBase.getSharedPreferences("settings", MODE_PRIVATE);
+        String lang = prefs.getString("app_language", "ru"); // язык по умолчанию — русский
+        Context context = LocaleHelper.setAppLocale(newBase, lang);
+        super.attachBaseContext(context);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

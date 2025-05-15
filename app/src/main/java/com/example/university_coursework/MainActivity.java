@@ -2,7 +2,9 @@ package com.example.university_coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -31,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<DoctorInfo> allDoctors = new ArrayList<>();
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences prefs = newBase.getSharedPreferences("settings", MODE_PRIVATE);
+        String lang = prefs.getString("app_language", "ru"); // язык по умолчанию — русский
+        Context context = LocaleHelper.setAppLocale(newBase, lang);
+        super.attachBaseContext(context);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

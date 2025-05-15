@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
+        android:icon="@drawable/language"
         android:key="language"
         android:title="@string/settings_Language"
         android:entries="@array/settings_language"
@@ -8,20 +9,19 @@
         android:defaultValue="ru" />
 
     <ListPreference
+        android:icon="@drawable/notifications"
         android:key="notification_ringtone"
         android:title="@string/settings_RingtoneTitle"
         android:entries="@array/settings_ringtone"
         android:entryValues="@array/settings_ringtone"
-        android:defaultValue="default" />
+        android:defaultValue="@string/settings_ringtoneArray2" />
 
     <ListPreference
+        android:icon="@drawable/notifications_loudness"
         android:key="notification_volume"
         android:title="@string/settings_VolumeTitle"
         android:entries="@array/settings_volume"
         android:entryValues="@array/settings_volume"
-        android:defaultValue="default" />
-
-
-
+        android:defaultValue="@string/settings_volumeArray2" />
 
 </PreferenceScreen>
