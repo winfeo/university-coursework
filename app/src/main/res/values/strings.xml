@@ -69,6 +69,8 @@
     <string name="patient_editPatientHistoryTitle">Редактирование истории</string>
     <string name="patient_saveTextConfirmation">Изменённый текст не будет сохранён</string>
     <string name="patient_saveTextConfirmationTitle">Вернуться к карте пациента?</string>
+    <string name="patient_dataSaved">Данные сохранены</string>
+    <string name="patient_dataNotSaved">Данные не сохранены</string>
 
 
 </resources>

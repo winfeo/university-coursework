@@ -60,9 +60,10 @@
         android:id="@+id/loginButton"
         style="@style/MyRoundedButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:onClick="enterButton"
-        android:text="@string/enterButton"/>
+        android:text="@string/enterButton"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:layout_width="wrap_content"

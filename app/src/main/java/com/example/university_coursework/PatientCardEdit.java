@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.university_coursework.database.*;
@@ -105,7 +106,7 @@ public class PatientCardEdit extends AppCompatActivity {
                 //saveChangedForCallback(RESULT_OK);
                 turnOffButton();
                 TEXT_CHANGED = false;
-                Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT).show();
+                showToastMessage(getText(R.string.patient_dataSaved).toString());
             }
         });
 
@@ -157,7 +158,7 @@ public class PatientCardEdit extends AppCompatActivity {
                 //saveChangedForCallback(RESULT_OK);
                 turnOffButton();
                 TEXT_CHANGED = false;
-                Toast.makeText(PatientCardEdit.this,"Данные сохранены", Toast.LENGTH_SHORT).show();
+                showToastMessage(getText(R.string.patient_dataSaved).toString());
                 dialogInfo.dismiss();
                 finish();
             }
@@ -167,7 +168,7 @@ public class PatientCardEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //saveChangedForCallback(RESULT_CANCELED);
-                Toast.makeText(PatientCardEdit.this,"Данные не сохранены", Toast.LENGTH_SHORT).show();
+                showToastMessage(getText(R.string.patient_dataNotSaved).toString());
                 dialogInfo.dismiss();
                 finish();
             }
@@ -209,6 +210,19 @@ public class PatientCardEdit extends AppCompatActivity {
     }
 
      */
+
+    private void showToastMessage(String message){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, null);
+
+        TextView text = layout.findViewById(R.id.toast_text);
+        text.setText(message);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
 
     private void turnOnButton(){
         Button buttonSAVE = findViewById(R.id.patient_saveButton);
