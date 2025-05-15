@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.university_coursework.fragments.SettingsFragment;
+
 public class ProfileSettings extends AppCompatActivity {
 
     @Override
@@ -21,6 +23,14 @@ public class ProfileSettings extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle(getText(R.string.settings));
         }
+
+        //Показ уведомлений через фрагмент
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.settings_container, new SettingsFragment())
+                    .commit();
+        }
     }
 
     // Нажатие на стрелку "назад"
@@ -32,4 +42,5 @@ public class ProfileSettings extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

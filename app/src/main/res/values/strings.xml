@@ -32,6 +32,7 @@
     <!-- Текст для фрагмента профиль -->
     <string name="patientsList">Список всех пациентов</string>
     <string name="searchHint">Введите ID пациента</string>
+    <string name="notificationsList">Новых уведомлений нет</string>
 
     <!-- Текст для фрагмента профиль -->
     <string name="profile_title">Профиль</string>
@@ -71,6 +72,20 @@
     <string name="patient_saveTextConfirmationTitle">Вернуться к карте пациента?</string>
     <string name="patient_dataSaved">Данные сохранены</string>
     <string name="patient_dataNotSaved">Данные не сохранены</string>
+
+    <!-- Текст для экрана настроек приложения -->
+    <string name="settings_Language">Язык</string>
+    <string name="settings_RingtoneTitle">Рингтон уведомления</string>
+    <string name="settings_VolumeTitle">Громкость рингтона</string>
+
+    <string name="settings_ringtoneArray1">Нет</string>
+    <string name="settings_ringtoneArray2">Стандартный</string>
+    <string name="settings_ringtoneArray3">Музыкальная шкатулка</string>
+    <string name="settings_ringtoneArray4">Капли</string>
+
+    <string name="settings_volumeArray1">тихо</string>
+    <string name="settings_volumeArray2">нормально</string>
+    <string name="settings_volumeArray3">громко</string>
 
 
 </resources>
