@@ -1,7 +1,9 @@
 package com.example.university_coursework.fragments;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -118,6 +120,10 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(View view){
                         dialogExit.dismiss();
+                        //Удаляем авторизацию
+                        SharedPreferences prefs = getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE);
+                        prefs.edit().remove("doctor_id").apply();
+
                         Intent intent = new Intent(getContext(), MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         StoreDatabases.clearLocaleDatabases();

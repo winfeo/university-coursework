@@ -52,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
         //создаём (загружаем) базу данных докторов
         dbDoctorsHelper = new DatabaseDoctorsHelper(getApplicationContext());
         dbDoctorsHelper.createDatabase();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         //Получаем все записи из БД
         dbDoctors = dbDoctorsHelper.open();
         userCursor = dbDoctors.rawQuery("select * from " + dbDoctorsHelper.TABLE,null);
@@ -64,6 +60,20 @@ public class MainActivity extends AppCompatActivity {
 
         fillDoctorsArray();
 
+        //Выполняем автоматический вход в аккаунт, если уже авторизован
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        String doctorId = prefs.getString("doctor_id", null);
+
+        if (doctorId != null) {
+            for(DoctorInfo doctor: allDoctors){
+                if(doctor.getId().equals(doctorId)){
+                    DoctorInfo.saveObject(doctor);
+                }
+            }
+            // Уже авторизован, переходим сразу на главный экран
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
     }
 
     public void enterButton(View view){
@@ -88,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
                     for(DoctorInfo doctor: allDoctors){
                         if(doctor.getId().equals(userCursor.getString(userCursor.getColumnIndexOrThrow("_id")))){
                             DoctorInfo.saveObject(doctor);
+                            //сохраняем id для того, чтобы снова не авторизовываться при входе
+                            SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+                            prefs.edit()
+                                    .putString("doctor_id", doctor.getId()) // здесь должен быть настоящий ID врача
+                                    .apply();
                         }
                     }
 
