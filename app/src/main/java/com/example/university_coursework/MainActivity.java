@@ -1,6 +1,7 @@
 package com.example.university_coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        PreferenceManager.setDefaultValues(this, "settings", Context.MODE_PRIVATE, R.xml.settings, true);
         setContentView(R.layout.login_page);
 
         loginText = findViewById(R.id.enterLogin);
@@ -57,13 +59,18 @@ public class MainActivity extends AppCompatActivity {
         dbDoctors = dbDoctorsHelper.open();
         userCursor = dbDoctors.rawQuery("select * from " + dbDoctorsHelper.TABLE,null);
         Log.d("DatabaseDoctorHelper", Integer.toString(userCursor.getCount()));
-
         fillDoctorsArray();
 
-        //Выполняем автоматический вход в аккаунт, если уже авторизован
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        String doctorId = prefs.getString("doctor_id", null);
+        if (!prefs.contains("notification_ringtone")) {
+            prefs.edit().putString("notification_ringtone", getString(R.string.settings_ringtoneArray2)).apply();
+        }
+        if (!prefs.contains("notification_volume")) {
+            prefs.edit().putString("notification_volume", getString(R.string.settings_volumeArray2)).apply();
+        }
 
+        //Выполняем автоматический вход в аккаунт, если уже авторизован
+        String doctorId = prefs.getString("doctor_id", null);
         if (doctorId != null) {
             for(DoctorInfo doctor: allDoctors){
                 if(doctor.getId().equals(doctorId)){
@@ -158,7 +165,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        userCursor.close();
-        dbDoctors.close();
+        if (userCursor != null && !userCursor.isClosed()) {
+            userCursor.close();
+        }
+        if (dbDoctors != null && dbDoctors.isOpen()) {
+            dbDoctors.close();
+        }
     }
 }

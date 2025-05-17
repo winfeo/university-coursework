@@ -169,7 +169,11 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        userCursor.close();
-        dbPatients.close();
+        if (userCursor != null && !userCursor.isClosed()) {
+            userCursor.close();
+        }
+        if (dbPatients != null && dbPatients.isOpen()) {
+            dbPatients.close();
+        }
     }
 }

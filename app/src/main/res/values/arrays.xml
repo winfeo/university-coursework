@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="settings_language">
-        <item>English</item>
         <item>Русский</item>
+        <item>English</item>
     </string-array>
 
-    <string-array name="settings_language_values">
-        <item>en</item>
+    <string-array name="settings_languageValues">
         <item>ru</item>
+        <item>en</item>
     </string-array>
-
 
     <string-array name="settings_ringtone">
         <item>@string/settings_ringtoneArray1</item>
@@ -18,9 +17,22 @@
         <item>@string/settings_ringtoneArray4</item>
     </string-array>
 
+    <string-array name="settings_ringtoneValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
     <string-array name="settings_volume">
         <item>@string/settings_volumeArray1</item>
         <item>@string/settings_volumeArray2</item>
         <item>@string/settings_volumeArray3</item>
+    </string-array>
+
+    <string-array name="settings_volumeValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 </resources>

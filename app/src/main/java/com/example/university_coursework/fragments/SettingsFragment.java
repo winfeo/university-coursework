@@ -14,29 +14,38 @@ import com.example.university_coursework.R;
 public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        // Указываем имя общего файла настроек
+        getPreferenceManager().setSharedPreferencesName("settings");
+        getPreferenceManager().setSharedPreferencesMode(Context.MODE_PRIVATE);
+
+        // Загружаем из settings.xml
         setPreferencesFromResource(R.xml.settings, rootKey);
 
-        ListPreference languagePref = findPreference("language");
+        ListPreference ringtonePref = findPreference("notification_ringtone");
+        if (ringtonePref != null) {
+            ringtonePref.setSummaryProvider(ListPreference.SimpleSummaryProvider.getInstance());
+        }
 
+        ListPreference volumePref = findPreference("notification_volume");
+        if (volumePref != null) {
+            volumePref.setSummaryProvider(ListPreference.SimpleSummaryProvider.getInstance());
+        }
+
+        ListPreference languagePref = findPreference("language");
         if (languagePref != null) {
             languagePref.setOnPreferenceChangeListener((preference, newValue) -> {
                 String selectedLang = (String) newValue;
 
-                // Сохраняем язык
-                requireActivity()
-                        .getSharedPreferences("settings", Context.MODE_PRIVATE)
-                        .edit()
-                        .putString("app_language", selectedLang)
-                        .apply();
+                // Сохраняем и применяем язык
+                requireActivity().getSharedPreferences("settings", Context.MODE_PRIVATE)
+                        .edit().putString("app_language", selectedLang).apply();
 
-                // Применяем язык
                 LocaleHelper.setAppLocale(requireActivity(), selectedLang);
 
-                // Перезапуск всего приложения через splash или main
+                // Перезапуск
                 Intent intent = new Intent(requireActivity(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-
                 requireActivity().finish();
 
                 return true;
@@ -44,3 +53,4 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         }
     }
 }
+

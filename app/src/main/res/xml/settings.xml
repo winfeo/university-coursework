@@ -5,23 +5,26 @@
         android:key="language"
         android:title="@string/settings_Language"
         android:entries="@array/settings_language"
-        android:entryValues="@array/settings_language_values"
-        android:defaultValue="ru" />
+        android:entryValues="@array/settings_languageValues"
+        android:defaultValue="ru"
+        android:summary="%s"/>
 
     <ListPreference
         android:icon="@drawable/notifications"
         android:key="notification_ringtone"
         android:title="@string/settings_RingtoneTitle"
         android:entries="@array/settings_ringtone"
-        android:entryValues="@array/settings_ringtone"
-        android:defaultValue="@string/settings_ringtoneArray2" />
+        android:entryValues="@array/settings_ringtoneValues"
+        android:defaultValue="2"
+        android:summary="%s"/>
 
     <ListPreference
         android:icon="@drawable/notifications_loudness"
         android:key="notification_volume"
         android:title="@string/settings_VolumeTitle"
         android:entries="@array/settings_volume"
-        android:entryValues="@array/settings_volume"
-        android:defaultValue="@string/settings_volumeArray2" />
+        android:entryValues="@array/settings_volumeValues"
+        android:defaultValue="2"
+        android:summary="%s"/>
 
 </PreferenceScreen>
