@@ -19,6 +19,7 @@
 dependencies {
     implementation 'androidx.fragment:fragment:1.4.1'
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.preference:preference:1.1.1"
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
