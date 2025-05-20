@@ -28,6 +28,60 @@ android {
     }
 }
 
+task generateJavadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+
+    // Для приложений используем applicationVariants вместо libraryVariants
+    android.applicationVariants.all { variant ->
+        if (variant.name == 'release') {
+            owner.classpath += variant.javaCompileProvider.get().classpath
+        }
+    }
+
+    afterEvaluate {
+        classpath += files(android.applicationVariants.collect { variant ->
+            variant.javaCompileProvider.get().classpath.files
+        })
+    }
+
+    exclude '**/R.java'
+    exclude '**/R/*.java'
+    exclude '**/BuildConfig.java'
+    exclude '**/*.xml'  // Исключаем XML-файлы (ресурсы)
+    exclude '**/res/**' // Исключаем всю папку res
+
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        docEncoding 'UTF-8'
+        locale 'ru'
+        links "https://developer.android.com/reference"
+        links "https://docs.oracle.com/javase/8/docs/api/"
+        title "Документация курсового проекта по ПиРМП"
+        memberLevel = JavadocMemberLevel.PROTECTED
+    }
+
+    destinationDir = file("${rootDir}/docs/javadoc/")
+}
+
+task cleanJavadoc(type: Delete) {
+    delete "${rootDir}/docs/javadoc/"
+}
+
+generateJavadoc.dependsOn cleanJavadoc
+
+
+
+
+
+
+
+
+
+
+
+
 dependencies {
     implementation 'androidx.fragment:fragment:1.4.1'
     implementation "androidx.cardview:cardview:1.0.0"

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.example.university_coursework"},{"l":"com.example.university_coursework.database"},{"l":"com.example.university_coursework.fragments"}]
