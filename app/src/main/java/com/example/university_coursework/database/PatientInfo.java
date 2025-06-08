@@ -3,6 +3,10 @@ package com.example.university_coursework.database;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 //Класс для объекта мини-карточки пациента
 public class PatientInfo implements Serializable {
@@ -106,5 +110,15 @@ public class PatientInfo implements Serializable {
     public void setRegistrationDate(String registrationDate) {this.registrationDate = registrationDate; }
     public void setPrescribedMedications(String prescribedMedications) {this.prescribedMedications = prescribedMedications; }
     public void setMedicalHistory(String medicalHistory) { this.medicalHistory = medicalHistory; }
+
+    public Date getBirthDateAsDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        try {
+            return sdf.parse(this.birthDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return new Date(0); // Возвращаем дату по умолчанию при ошибке
+        }
+    }
 
 }

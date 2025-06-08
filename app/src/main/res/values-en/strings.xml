@@ -78,4 +78,17 @@
     <string name="settings_volumeArray1">quiet</string>
     <string name="settings_volumeArray2">normal</string>
     <string name="settings_volumeArray3">loud</string>
+
+    <string name="filters_sortID">ID (default)</string>
+    <string name="filters_sortDate">Date of first visit</string>
+    <string name="filters_sortAge">Date of birth</string>
+    <string name="sort">Sort by</string>
+    <string name="filter1">Filter by diagnosis</string>
+    <string name="filter1Chose">Select a diagnosis</string>
+    <string name="filter2">Filter by leading physician</string>
+    <string name="filter2Chose">Select a doctor</string>
+    <string name="buttonFilterApply">Apply</string>
+    <string name="buttonFilterReset">Reset</string>
+    <string name="all1">All diagnoses</string>
+    <string name="all2">All doctors</string>
 </resources>

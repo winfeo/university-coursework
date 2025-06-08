@@ -18,44 +18,52 @@
         android:layout_marginHorizontal="15dp"/>
 
     <LinearLayout
-        android:id="@+id/search_bar"
-        android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_card4"
+        android:layout_height="64dp"
         android:orientation="horizontal"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="16dp"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/search_bar"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_card4"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:gravity="center_vertical">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/search"
-            android:layout_weight="1"
             android:layout_gravity="center"
             app:tint="@color/mid_gray" />
 
         <EditText
             android:id="@+id/searchID"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            android:layout_weight="15"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="16dp"
             android:background="@null"
             android:hint="@string/searchHint"
-            android:minHeight="48dp"
-            android:textColorHint="@color/mid_gray" />
+            android:textColorHint="@color/mid_gray"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:scrollHorizontally="true"
+            android:inputType="text"/>
 
         <ImageButton
             android:id="@+id/clear_search_bar"
             android:clickable="false"
             android:visibility="invisible"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:minWidth="48dp"
@@ -63,6 +71,35 @@
             android:src="@drawable/close"
             app:tint="@color/mid_gray"
             tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="66dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp">
+
+            <ImageButton
+                android:id="@+id/filter_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_filter"
+                android:scaleType="center"
+                android:background="@drawable/rectangle_card5"/>
+
+            <TextView
+                android:id="@+id/filter_badge"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:background="@drawable/badge_background"
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                android:visibility="gone"
+                android:text="0"/>
+        </FrameLayout>
     </LinearLayout>
 
     <View

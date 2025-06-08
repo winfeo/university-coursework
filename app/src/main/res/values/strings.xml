@@ -87,5 +87,19 @@
     <string name="settings_volumeArray2">нормально</string>
     <string name="settings_volumeArray3">громко</string>
 
+    <!-- Текст для экрана фильтров -->
+    <string name="filters_sortID">ID (стандартная сортировка)</string>
+    <string name="filters_sortDate">Дате обращения в клинику</string>
+    <string name="filters_sortAge">Дате рождения</string>
+    <string name="sort">Сортировать по</string>
+    <string name="filter1">Фильтр по заболеваниям</string>
+    <string name="filter1Chose">Выберите заболевание</string>
+    <string name="filter2">Фильтр по лечащему врачу</string>
+    <string name="filter2Chose">Выберите врача</string>
+    <string name="buttonFilterApply">Применить</string>
+    <string name="buttonFilterReset">Сбросить</string>
+    <string name="all1">Все заболевания</string>
+    <string name="all2">Все врачи</string>
+
 
 </resources>

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<DoctorInfo> allDoctors = new ArrayList<>();
 
+
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences prefs = newBase.getSharedPreferences("settings", MODE_PRIVATE);
