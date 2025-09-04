@@ -112,7 +112,10 @@ public class PatientCardEdit extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* TODO специально добавленный баг (не сохраняется информация после редактирования) - убрать потом
                 saveChangedInDatabase();
+
+                 */
                 //saveChangedForCallback(RESULT_OK);
                 turnOffButton();
                 TEXT_CHANGED = false;

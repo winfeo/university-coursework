@@ -2,10 +2,10 @@
     <string name="app_name">Пациенты больницы</string>
 
     <string name="app_nameString">Приложение: Пациенты больницы</string>
-    <string name="app_version">Версия: 1.0.0</string>
+    <string name="app_version">Версия: 1.4.2</string>
     <string name="app_info">Мобильная информационно-справочная система для врачей.</string>
     <string name="app_description">Приложение предоставляет доступ к сведениям о пациентах, истории лечения, назначениях и медицинской информации, необходимой для повседневной клинической практики.</string>
-    <string name="app_creator">Разработчик: Рябикин Кирилл Вячеславович</string>
+    <string name="app_creator">Разработчик: Vibe-кодинг Inc.</string>
     <string name="app_contacts">Контакты: support@example.com</string>
     <string name="app_privacyPolicy">Политика конфиденциальности: www.minecraft.story-mod.com/privacy</string>
 

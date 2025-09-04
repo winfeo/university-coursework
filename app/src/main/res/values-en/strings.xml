@@ -2,10 +2,10 @@
     <string name="app_name">Hospital Patients</string>
 
     <string name="app_nameString">App: Hospital Patients</string>
-    <string name="app_version">Version: 1.0.0</string>
+    <string name="app_version">Version: 1.4.2</string>
     <string name="app_info">Mobile information system for doctors.</string>
     <string name="app_description">The app provides access to information about patients, medical history, prescriptions, and other clinical data essential for daily practice.</string>
-    <string name="app_creator">Developer: Ryabikin Kirill Vyacheslavovich</string>
+    <string name="app_creator">Developer: Vibe-кодинг Inc.</string>
     <string name="app_contacts">Contacts: support@example.com</string>
     <string name="app_privacyPolicy">Privacy Policy: www.minecraft.story-mod.com/privacy</string>
 

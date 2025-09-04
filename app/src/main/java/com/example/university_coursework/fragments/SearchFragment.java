@@ -70,8 +70,12 @@ public class SearchFragment extends Fragment implements FiltersFragment.OnFilter
         adapter = new PatientMiniCardAdapter(getContext(), allPatients, stateClickListener);
         allPatientsRecyclerView.setAdapter(adapter);
 
+        // TODO поправить в строковых ресах разработчика и конф. обратно
+        /* TODO специально добавленный баг (не работает кнопка) - убрать потом
         filterButton = view.findViewById(R.id.filter_button);
         filterButton.setOnClickListener(v -> showFiltersDialog());
+
+         */
 
         applyFiltersAndSort();
 

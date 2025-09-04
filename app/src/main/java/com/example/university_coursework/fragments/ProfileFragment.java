@@ -121,6 +121,7 @@ public class ProfileFragment extends Fragment {
                     public void onClick(View view){
                         dialogExit.dismiss();
                         //Удаляем авторизацию
+                        /* TODO специально добавленный баг (ошибка сброса авторизации) - удалить потом
                         SharedPreferences prefs = getActivity().getSharedPreferences("settings", Context.MODE_PRIVATE);
                         prefs.edit().remove("doctor_id").apply();
 
@@ -129,6 +130,8 @@ public class ProfileFragment extends Fragment {
                         StoreDatabases.clearLocaleDatabases();
                         startActivity(intent);
                         getActivity().finish();
+
+                         */
                     }
 
                 });
