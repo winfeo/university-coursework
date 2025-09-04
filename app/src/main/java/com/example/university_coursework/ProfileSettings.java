@@ -1,6 +1,7 @@
 package com.example.university_coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
@@ -24,6 +25,9 @@ public class ProfileSettings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Принудительно устанавливаем светлую тему
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         setContentView(R.layout.activity_profile_settings);
 
         Toolbar toolbar = findViewById(R.id.settingsToolbar);

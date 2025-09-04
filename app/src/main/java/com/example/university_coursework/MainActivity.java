@@ -1,6 +1,7 @@
 package com.example.university_coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import android.content.Context;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Принудительно устанавливаем светлую тему
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         PreferenceManager.setDefaultValues(this, "settings", Context.MODE_PRIVATE, R.xml.settings, true);
         setContentView(R.layout.login_page);
 

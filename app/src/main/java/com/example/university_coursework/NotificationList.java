@@ -1,6 +1,7 @@
 package com.example.university_coursework;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
@@ -20,6 +21,9 @@ public class NotificationList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Принудительно устанавливаем светлую тему
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         setContentView(R.layout.activity_notification_list);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
