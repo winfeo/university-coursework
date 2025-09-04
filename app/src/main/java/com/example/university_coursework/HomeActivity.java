@@ -70,17 +70,19 @@ public class HomeActivity extends AppCompatActivity {
         loadFragment(new HomeFragment()); // Загружаем сразу домашний экран
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    loadFragment(new HomeFragment());
-                    return true;
-                case R.id.navigation_search:
-                    loadFragment(new SearchFragment());
-                    return true;
-                case R.id.navigation_profile:
-                    loadFragment(new ProfileFragment());
-                    return true;
+            int id = item.getItemId();
+
+            if (id == R.id.navigation_home) {
+                loadFragment(new HomeFragment());
+                return true;
+            } else if (id == R.id.navigation_search) {
+                loadFragment(new SearchFragment());
+                return true;
+            } else if (id == R.id.navigation_profile) {
+                loadFragment(new ProfileFragment());
+                return true;
             }
+
             return false;
         });
     }
